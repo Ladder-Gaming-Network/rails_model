@@ -1,17 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  string: 
-  string: 
-  string: 
-  int: 
-  string: 
-  string: 
+  username: MyString
+  lastname: MyString
+  stream_link: MyString
+  description: MyString
+  timezone_code: 1
 
 two:
-  string: 
-  string: 
-  string: 
-  int: 
-  string: 
-  string: 
+  username: MyString
+  lastname: MyString
+  stream_link: MyString
+  description: MyString
+  timezone_code: 1
