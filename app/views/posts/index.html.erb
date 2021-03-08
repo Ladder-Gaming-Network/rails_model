@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Gamer</th>
       <th>Text</th>
       <th>Parent post</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= post.id %></td>
         <td><%= post.gamer_id %></td>
         <td><%= post.text %></td>
         <td><%= post.parent_post %></td>

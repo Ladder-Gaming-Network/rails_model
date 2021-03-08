@@ -5,17 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 require 'faker'
 Follow.delete_all
 Post.delete_all
 
-#Seed Follows
-30.times do
-    r = Follow.create(user_id: 1, follower_id: 1)
+# Reset the Primary Keys
+ActiveRecord::Base.connection.tables.each do |t|
+    ActiveRecord::Base.connection.reset_pk_sequence!(t)
+  end
+
+num_gamers=10
+
+#Seed Follows, every gamer will follow another gamer
+for i in 1..num_gamers do
+    r = Follow.create(user_id: i, follower_id: num_gamers-i+1)
     #r = Follow.create(user_id: User.all.sample.id, follower_id: User.all.sample.id)
 end
 
-#Seed Posts
-for i in 1..30 do
-    Post.create(gamer_id:i, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(0..10))
+#Seed Posts, every gamer will have two posts
+for i in 0..num_gamers*2-1 do
+    # also have the parent_post be random and only for some of the posts
+    Post.create(gamer_id:i/2+1, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(num_gamers/2))
 end
