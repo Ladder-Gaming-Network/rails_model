@@ -1,15 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# Lasser Gaming Network COSI 166B Spring 2021
 
 require 'faker'
 Follow.delete_all
 Post.delete_all
+User.delete_all
 
 # Reset the Primary Keys
 ActiveRecord::Base.connection.tables.each do |t|
@@ -17,6 +11,12 @@ ActiveRecord::Base.connection.tables.each do |t|
   end
 
 num_gamers=10
+
+#Seed Users
+for i in 0..num_gamers do
+    last_name=Faker::Name.last_name
+    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/"+rand(100..999).to_s, description:Faker::Quote.yoda, timezone_code:rand(-12..12))
+end
 
 #Seed Follows, every gamer will follow another gamer
 for i in 1..num_gamers do
