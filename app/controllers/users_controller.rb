@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    # get current user if logged in
+    # if profile is same as user, edit profile
+    # if profile is different, have follow button
+    # show feed
   end
 
   # GET /users/new

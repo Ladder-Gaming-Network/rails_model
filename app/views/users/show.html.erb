@@ -1,29 +1,43 @@
-<p id="notice"><%= notice %></p>
+<head>
+    <%= stylesheet_link_tag "/stylesheets/stylesheet.css" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<%= image_tag("/images/ladder_logo.png") %>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
+</br>
 
-<p>
-  <strong>Stream link:</strong>
-  <%= @user.stream_link %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
-
-<p>
-  <strong>Timezone code:</strong>
-  <%= @user.timezone_code %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="grid-container">
+    <div class="boxed">
+        <%= image_tag("/images/gamer_pic.jpg") %>
+        </br>
+        <p>
+            <strong>Username:</strong>
+            <%= @user.username %>
+        </p>
+        <p>
+            <strong>Last name:</strong>
+            <%= @user.lastname %>
+        </p>
+        <p>
+            <strong>Description:</strong>
+            <%= @user.description %>
+        </p>
+        <p>
+            <strong>Timezone code:</strong>
+            <%= @user.timezone_code %>
+        </p>
+        <p>Twitch: twitch.tv/user1</p>
+        <p>Youtube: youtube.com/user1</p>
+        </br>
+        <%= link_to '/profile/follow', remote: true do %>
+            <button>Follow</button>
+        <% end %>
+    </div>
+    <div class="boxed">
+        <p>Feed</p>
+        </br>
+        <p>User 2: I also like pizza.</p>
+    </div>
+</div>
+</br>
