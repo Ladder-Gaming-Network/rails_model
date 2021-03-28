@@ -20,12 +20,18 @@ end
 
 #Seed Follows, every gamer will follow another gamer
 for i in 1..num_gamers do
-    r = Follow.create(user_id: i, follower_id: num_gamers-i+1)
-    #r = Follow.create(user_id: User.all.sample.id, follower_id: User.all.sample.id)
+    #r = Follow.create(user_id: i, follower_id: num_gamers-i+1)
+    #random=random_no_repeat(i,1,num_gamers)
+    random=([*1..num_gamers] - [i]).sample
+    r = Follow.create(user_id: random, follower_id: i)
+    random=([*1..num_gamers] - [i,random]).sample
+    r = Follow.create(user_id: random, follower_id: i)
 end
 
 #Seed Posts, every gamer will have two posts
 for i in 0..num_gamers*2-1 do
-    # also have the parent_post be random and only for some of the posts
-    Post.create(gamer_id:i/2+1, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(num_gamers/2))
+    for j in 0..1 do
+        # also have the parent_post be random and only for some of the posts
+        Post.create(user_id:i, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(num_gamers/2))
+    end
 end
