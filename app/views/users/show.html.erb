@@ -1,63 +1,112 @@
-<p id="notice"><%= notice %></p>
+<head>
+    <%= stylesheet_link_tag "/stylesheets/stylesheet.css" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<body>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
+    <div class="center">
+        <%= image_tag("/images/ladder_logo.png") %>
+    </div>
 
-<p>
-  <strong>Stream link:</strong>
-  <%= @user.stream_link %>
-</p>
+    <div class="container" style="background-color:lightgray;">
+        <div class="row">
+            <div class="center col-sm">
+            <h3><%= link_to "Home", '/' %></h3>
+            </div>
+            <div class="center col-sm">
+            <h3><%= link_to "News", '/' %></h3>
+            </div>
+            <div class="center col-sm">
+            <h3><%= link_to "User Search", '/' %></h3>
+            </div>
+            <div class="center col-sm">
+            <h3><%= link_to "Profile", '/' %></h3>
+            </div>
+            <div class="center col-sm">
+            <h3><%= link_to "Log Out", '/' %></h3>
+            </div>
+        </div>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
+    </br>
 
-<p>
-  <strong>Timezone code:</strong>
-  <%= @user.timezone_code %>
-</p>
+    <div class="grid-container">
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1> <strong> Profile </strong> </h1>
+                <%= image_tag("/images/gamer_pic.jpg") %>
+                </br> </br>
+                <p>
+                    <strong>Username:</strong>
+                    <%= @user.username %>
+                </p>
+                <p>
+                    <strong>Last name:</strong>
+                    <%= @user.lastname %>
+                </p>
+                <p>
+                    <strong>Description:</strong>
+                    <%= @user.description %>
+                </p>
+                <p>
+                    <strong>Timezone code:</strong>
+                    <%= @user.timezone_code %>
+                </p>
+                <p>
+                <strong>Stream link:</strong>
+                <%= @user.stream_link %>
+                </p>
+                </br>
 
-<p>
-  <strong>Posts:</strong>
-  <table>
-  <% @user.posts.each do |post| %>
-      <tr>
-        <td><%= post.text %></td>
-      </tr>
-    <% end %>
-    </table>
-</p>
+                <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
+                    <button class="btn btn-secondary">Follow</button>
+                <% end %>
 
-<p>
-  <table>
-  <strong>Following:</strong>
-  <% @user.following.each do |follower| %>
-      <tr>
-        <td><%= follower.username %></td>
-      </tr>
-    <% end %>
-    </table>
-</p>
+                <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
+                    <button class="btn btn-secondary">Unfollow</button>
+                <% end %>
+            </div>
+        </div>
 
-<p>
-  <table>
-  <strong>Followers:</strong>
-  <% @user.followers.each do |follower| %>
-      <tr>
-        <td><%= follower.username %></td>
-      </tr>
-    <% end %>
-    </table>
-</p>
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1>Feed</h1>
+                </br>
+                <p>TO DO PUT FEED HERE</p>
+            </div>
+        </div>
+    </div>
+    </br>
+    <div class="boxed">
+            <div class="inner-profile">
+                 <strong>Posts:</strong>
+            <table>
+            <% @user.posts.each do |post| %>
+                <tr>
+                  <td><%= post.text %></td>
+                </tr>
+              <% end %>
+              </table>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+              <strong>Following:</strong>
+              <br>
+            <% @user.following.each do |follower| %>
+                <tr>
+                  <td><%= follower.username %></td>
+                </tr>
+              <% end %>
+              </table>
+              <br>
+              <table>
+            <strong>Followers:</strong>
+            <% @user.followers.each do |follower| %>
+                <tr>
+                  <td><%= follower.username %></td>
+                </tr>
+              <% end %>
+              </table>
+            </div>
+        </div>
+</body>
