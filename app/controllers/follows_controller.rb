@@ -4,6 +4,10 @@ class FollowsController < ApplicationController
   # GET /follows or /follows.json
   def index
     @follows = Follow.all
+    if !admin?
+      flash[:danger]="Only the Admin can see that!"
+      redirect_to ""
+    end
   end
 
   # GET /follows/1 or /follows/1.json

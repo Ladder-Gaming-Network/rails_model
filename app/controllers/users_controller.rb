@@ -5,15 +5,20 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
+    if !admin?
+      flash[:danger]="Only the Admin can see that!"
+      redirect_to ""
+    end
   end
 
   # GET /users/1 or /users/1.json
   def show
     @user = User.find(params[:id])
-    if !current_user?(@user)
-      flash[:danger]="You can only view your own user information!"
-      redirect_to "/users/#{current_user.id}"
-    end
+    # will use for editing
+    # if !current_user?(@user)
+    #   flash[:danger]="You can only view your own user information!"
+    #   redirect_to "/users/#{current_user.id}"
+    # end
     @follows = Follow.all
     #get posts that have user id = user.following
     @feed_posts = []

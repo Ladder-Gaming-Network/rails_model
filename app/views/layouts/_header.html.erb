@@ -7,9 +7,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-              <li><%= link_to "Profile", "/users/#{current_user.id}", class:"nav-link active" %></li>
-          </li>
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/posts">Posts</a>
           </li>
@@ -19,8 +16,16 @@
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Join</button>
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+
+        <% if logged_in? %>
+        <li><%= link_to "Profile", "/users/#{current_user.id}", class:"nav-link active" %></li>
+        <li><%= link_to "Log out", logout_path, class:"nav-link active", method: :delete %></li> 
+    <% else %>
+        <li><%= link_to "Log in", login_path, class:"nav-link active" %></li> 
+        <li><%= link_to "Sign up", signup_path, class:"nav-link active" %></li>
+    <% end %>
       </div>
     </div>
   </nav>
