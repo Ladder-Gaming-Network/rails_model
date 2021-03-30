@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/nicoramirez/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0
+topdir = /Users/nicoramirez/.rbenv/versions/2.7.2/include/ruby-2.7.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/nicoramirez/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0/x86_64-darwin19
+arch_hdrdir = /Users/nicoramirez/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin19
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/nicoramirez/.rvm/rubies/ruby-2.7.2
+prefix = $(DESTDIR)/Users/nicoramirez/.rbenv/versions/2.7.2
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20210307-1212-124x7o5
-sitelibdir = $(DESTDIR)./.gem.20210307-1212-124x7o5
+sitearchdir = $(DESTDIR)./.gem.20210328-2273-126osom
+sitelibdir = $(DESTDIR)./.gem.20210328-2273-126osom
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -65,8 +65,8 @@ archdir = $(rubyarchdir)
 
 
 CC_WRAPPER = 
-CC = gcc
-CXX = g++
+CC = clang
+CXX = clang++
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
@@ -87,10 +87,10 @@ CCDLFLAGS = -fno-common
 CFLAGS   = $(CCDLFLAGS) $(cflags)  -fno-common -pipe $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/usr/local/include  -I/usr/local/opt/libyaml/include -I/usr/local/opt/libksba/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/openssl@1.1/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/usr/local/include -I/Users/nicoramirez/.rbenv/versions/2.7.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) -g -O2 $(ARCH_FLAG)
-ldflags  = -L. -fstack-protector-strong -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl@1.1/lib -Wl,-rpath,/usr/local/lib
-dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl@1.1/lib 
+ldflags  = -L. -L/Users/nicoramirez/.rbenv/versions/2.7.2/lib  -fstack-protector-strong -L/usr/local/lib -Wl,-rpath,/usr/local/lib
+dldflags = -L/Users/nicoramirez/.rbenv/versions/2.7.2/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -dynamic -bundle
@@ -115,8 +115,8 @@ ruby_headers = $(hdrdir)/ruby.h $(hdrdir)/ruby/backward.h $(hdrdir)/ruby/ruby.h 
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
 RMDIRS = rmdir -p
-MAKEDIRS = /usr/local/opt/coreutils/bin/gmkdir -p
-INSTALL = /usr/local/opt/coreutils/bin/ginstall -c
+MAKEDIRS = /usr/local/bin/gmkdir -p
+INSTALL = /usr/local/bin/ginstall -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
@@ -125,8 +125,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /usr/local/lib /usr/local/opt/libyaml/lib /usr/local/opt/libksba/lib /usr/local/opt/readline/lib /usr/local/opt/zlib/lib /usr/local/opt/openssl@1.1/lib
-LIBPATH =  -L. -L$(libdir) -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/openssl@1.1/lib
+libpath = . $(libdir) /usr/local/lib
+LIBPATH =  -L. -L$(libdir) -L/usr/local/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
