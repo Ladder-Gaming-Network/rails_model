@@ -15,7 +15,7 @@ num_gamers=10
 #Seed Users
 for i in 0..num_gamers do
     last_name=Faker::Name.last_name
-    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/"+rand(100..999).to_s, description:Faker::Quote.yoda, timezone_code:rand(-12..12))
+    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/"+rand(100..999).to_s, description:Faker::Quote.yoda, timezone_code:rand(-12..12),password:"123456", password_confirmation:"123456")
 end
 
 #Seed Follows, every gamer will follow another gamer
