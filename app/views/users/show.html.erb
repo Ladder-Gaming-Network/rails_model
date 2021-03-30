@@ -6,7 +6,7 @@
 
 <body>
 
-    <div class="center">
+    <div style="text-align:center">
         <%= image_tag("/images/ladder_logo.png") %>
     </div>
 
@@ -14,9 +14,6 @@
         <div class="row">
             <div class="center col-sm">
             <h3><%= link_to "Home", '/' %></h3>
-            </div>
-            <div class="center col-sm">
-            <h3><%= link_to "News", '/' %></h3>
             </div>
             <div class="center col-sm">
             <h3><%= link_to "User Search", '/' %></h3>
@@ -36,6 +33,7 @@
         <div class="boxed">
             <div class="inner-profile">
                 <h1> <strong> Profile </strong> </h1>
+                </br>
                 <%= image_tag("/images/gamer_pic.jpg") %>
                 </br> </br>
                 <p>
@@ -60,53 +58,55 @@
                 </p>
                 </br>
 
-                <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
-                    <button class="btn btn-secondary">Follow</button>
-                <% end %>
-
-                <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
-                    <button class="btn btn-secondary">Unfollow</button>
+                <% if Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then %>
+                    <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
+                        <button class="btn btn-secondary" onClick="window.location.reload();">Unfollow</button>
+                    <% end %>
+                <% else %>
+                    <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
+                        <button class="btn btn-secondary" onClick="window.location.reload();">Follow</button>
+                    <% end %>
                 <% end %>
             </div>
         </div>
 
         <div class="boxed">
             <div class="inner-profile">
-                <h1>Feed</h1>
+                <h1><strong>Feed</strong></h1>
                 </br>
-                <p>TO DO PUT FEED HERE</p>
+                <p>No posts from your followers yet.</p>
             </div>
         </div>
     </div>
-    </br>
     <div class="boxed">
             <div class="inner-profile">
-                 <strong>Posts:</strong>
+                <p><strong>Posts:</strong></p>
             <table>
             <% @user.posts.each do |post| %>
                 <tr>
-                  <td><%= post.text %></td>
+                  <td><p><%= post.text %></p></td>
                 </tr>
               <% end %>
-              </table>
+            </table>
+            </br>
 
-              <strong>Following:</strong>
-              <br>
+            <p><strong>Following: <%= @user.following.count %></strong></p>
             <% @user.following.each do |follower| %>
                 <tr>
-                  <td><%= follower.username %></td>
+                  <td><p><%= follower.username %></p></td>
                 </tr>
               <% end %>
               </table>
               <br>
               <table>
-            <strong>Followers:</strong>
+            <p><strong>Followers: <%= @user.followers.count %></strong></p>
             <% @user.followers.each do |follower| %>
                 <tr>
-                  <td><%= follower.username %></td>
+                  <td><p><%= follower.username %></p></td>
                 </tr>
               <% end %>
-              </table>
-            </div>
+            </table>
         </div>
+    </div>
+    </br>
 </body>

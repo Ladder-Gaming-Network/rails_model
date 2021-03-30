@@ -8,6 +8,14 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @current_user = User.first #temp
+    @follows = Follow.all
+    #get posts that have user id = user.following
+    @feed_posts = []
+    @current_user.following.each do |followed|
+      @feed_posts.append(Post.where(user_id: followed.id))
+    end
+
     # get current user if logged in
     # if profile is same as user, edit profile
     # if profile is different, have follow button

@@ -1,7 +1,42 @@
-<h2>Ladder</h2>
-<p>
-  <br>Welcome to the Ladder Gaming Network!</br>
-  <br>Go to /users to see gamer profiles</br>
-  <br>Go to /posts to see Posts</br>
-  <br>Go to /follows to see followers!</br>
-</p>
+<head>
+    <%= stylesheet_link_tag "/stylesheets/stylesheet.css" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+
+<div class="center">
+<%= image_tag("/images/ladder_logo.png") %>
+</div>
+
+<div class="container" style="background-color:lightgray;">
+<div class="row">
+    <div class="center col-sm">
+    <h3><%= link_to "Home", '/' %></h3>
+    </div>
+    <div class="center col-sm">
+    <h3><%= link_to "User Search", '/' %></h3>
+    </div>
+    <div class="center col-sm">
+    <h3><%= link_to "Profile", '/users/1' %></h3>
+    </div>
+    <div class="center col-sm">
+    <h3><%= link_to "Log Out", '/' %></h3>
+    </div>
+</div>
+</div>
+
+</br>
+</br>
+</br>
+</br>
+
+<div class="center">
+  <h1><strong>Ladder</strong></h1> </br>
+  <h2> Welcome to the Ladder Gaming Network!</h2>
+</div>
+
+</br>
+</br>
+</br>
+</br>
+</br>
