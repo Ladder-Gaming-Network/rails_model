@@ -7,7 +7,6 @@ class User < ApplicationRecord
     validates :description, presence: true
     validates :timezone_code, presence: true
 
-    has_many :items
     has_secure_password
     before_save { self.username = username.downcase }
     validates :password, presence: true, length: { minimum: 6 }

@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    if !admin?
+      flash[:danger]="Only the Admin can see that!"
+      redirect_to ""
+    end
   end
 
   # GET /posts/1 or /posts/1.json
