@@ -61,7 +61,11 @@
             <div class="inner-profile">
                 <h1><strong>Feed</strong></h1>
                 </br>
-                <p>No posts from your followers yet.</p>
+                <% @feed_posts.each do |post| %>
+                    <tr>
+                    <td><p><%= post %></p></td>
+                    </tr>
+                <% end %>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   using SessionsHelper
-  
+
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:show]
 
@@ -27,7 +27,9 @@ class UsersController < ApplicationController
     #get posts that have user id = user.following
     @feed_posts = []
     @current_user.following.each do |followed|
-      @feed_posts.append(Post.where(user_id: followed.id))
+      Post.where(user_id: followed.id).each do |post|
+        @feed_posts.append(post.text + " - " + followed.username)
+      end
     end
 
     # get current user if logged in
