@@ -22,4 +22,14 @@ class User < ApplicationRecord
     def followers
         User.find( FollowsHelper.get_user_follows(self.id))
     end
+
+    def self.search(keywords)
+        # assume either keywords or subject code is valid
+        formatted_keywords="%#{keywords}%"
+        searched_users=User.all()
+        if !keywords.blank?
+            searched_users=searched_users.where("username LIKE (?) or description LIKE (?)", formatted_keywords,formatted_keywords)
+        end
+        #searched_users
+    end
 end
