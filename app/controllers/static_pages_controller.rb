@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+
+  include SessionsHelper
+  
   def home
   end
 
@@ -6,10 +9,12 @@ class StaticPagesController < ApplicationController
   end
 
   def follow
-    Follow.create(user_id: params[:user_id], follower_id: 1)
+    current_user
+    Follow.create(user_id: params[:user_id], follower_id: @current_user.id)
   end
 
   def unfollow
-    Follow.where(user_id: params[:user_id], follower_id: 1).destroy_all
+    current_user
+    Follow.where(user_id: params[:user_id], follower_id: @current_user.id).destroy_all
   end
 end

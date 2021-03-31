@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  using SessionsHelper
+  
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:show]
 
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    current_user
     @user = User.find(params[:id])
     # will use for editing
     # if !current_user?(@user)
