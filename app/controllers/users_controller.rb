@@ -4,10 +4,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
-    if !admin?
-      flash[:danger]="Only the Admin can see that!"
-      redirect_to ""
+    if $new_users_search
+      @users=$users
+      $new_users_search=FALSE
+    else
+      @users = User.all
     end
   end
 
@@ -29,8 +30,6 @@ class UsersController < ApplicationController
     # get current user if logged in
     # if profile is same as user, edit profile
     # if profile is different, have follow button
-    # show feed
-  end
 
   # GET /users/new
   def new
@@ -52,6 +51,7 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
