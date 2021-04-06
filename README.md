@@ -1,7 +1,5 @@
-Ladder Gaming Network
+The Ladder Gaming Network Project
 
-Example rails project for Ladder Gaming Network Project
+[See Deployment Here](https://ladder-gaming.herokuapp.com/)
 
-[See Deployment Here]( https://ladder-gaming.herokuapp.com/)
-
-Go to `/follows` to see followers and `/posts` to see posts
+Made with Ruby on Rails
