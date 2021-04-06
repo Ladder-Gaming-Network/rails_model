@@ -13,3 +13,10 @@ two:
   stream_link: MyString
   description: MyString
   timezone_code: 1
+
+three:
+  username: MyString
+  lastname: MyString
+  stream_link: MyString
+  description: MyString
+  timezone_code: 1

@@ -58,3 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Extra gems
 gem 'hirb' #db pretty print - Hirb.enable
+# testing
+gem "chartkick"
+gem "groupdate"
+gem "kimurai"
