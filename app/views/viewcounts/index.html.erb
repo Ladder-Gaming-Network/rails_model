@@ -7,7 +7,7 @@
     <tr>
       <th>Stream</th>
       <th>Viewers</th>
-      <th>Timestamp</th>
+      <th>Created At</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= viewcount.stream_id %></td>
         <td><%= viewcount.viewers %></td>
-        <td><%= viewcount.timestamp %></td>
+        <td><%= viewcount.created_at %></td>
         <td><%= link_to 'Show', viewcount %></td>
         <td><%= link_to 'Edit', edit_viewcount_path(viewcount) %></td>
         <td><%= link_to 'Destroy', viewcount, method: :delete, data: { confirm: 'Are you sure?' } %></td>

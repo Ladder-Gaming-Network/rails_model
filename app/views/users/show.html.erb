@@ -67,26 +67,6 @@
                 <% end %>
             </div>
         </div>
-
-        <div class="boxed">
-            <div class="inner-profile">
-                <h1><strong>Streams</strong></h1>
-                Viewcount 
-                <br>
-                Date
-                <br>
-                </br>
-                <% @user.streams.each do |stream| %>
-                    <tr>
-                    <td><p><%= stream.title %></p></td>
-                    </tr>
-                        <% stream.viewcounts.each do |viewcount| %>
-                        <p><%= viewcount.viewers %></p>
-                        <p><%= viewcount.timestamp.to_date %></p></td>
-                        <% end %>
-                <% end %>
-            </div>
-        </div>
     </div>
 
     </br> </br>

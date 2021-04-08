@@ -41,6 +41,6 @@ for i in 0..num_gamers do
         # also have the parent_post be random and only for some of the posts
         Post.create(user_id:i, text:Faker::Quote.robin+" "+game, parent_post:rand(num_gamers/2))
         # create two viewcounts for the stream
-        Viewcount.create( stream_id:i, viewers:rand(100), timestamp:DateTime.new(2021,j+1,i+1,12))
+        Viewcount.create( stream_id:i, viewers:rand(100))
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_012224) do
+ActiveRecord::Schema.define(version: 2021_04_08_021400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_04_08_012224) do
   create_table "viewcounts", force: :cascade do |t|
     t.integer "stream_id"
     t.integer "viewers"
-    t.datetime "timestamp"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
