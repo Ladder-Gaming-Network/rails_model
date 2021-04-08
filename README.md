@@ -16,4 +16,6 @@ rails g scaffold Viewcount stream_id:integer viewers:integer timestamp:datetime
 
 (user has many streams, streams have many viewcounts)
 
+command yarn add chartkick chart.js needed to enable charts
+
 ![chart_example](images/chart_example.png)
