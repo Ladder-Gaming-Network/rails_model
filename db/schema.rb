@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_225232) do
+ActiveRecord::Schema.define(version: 2021_04_08_012224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,29 @@ ActiveRecord::Schema.define(version: 2021_03_30_225232) do
     t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id", "user_id"], name: "index_follows_on_follower_id_and_user_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "interest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "text"
     t.integer "parent_post"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "streams", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,6 +57,14 @@ ActiveRecord::Schema.define(version: 2021_03_30_225232) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.boolean "admin_permissions"
+  end
+
+  create_table "viewcounts", force: :cascade do |t|
+    t.integer "stream_id"
+    t.integer "viewers"
+    t.datetime "timestamp"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

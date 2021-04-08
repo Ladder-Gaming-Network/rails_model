@@ -4,6 +4,8 @@ require 'faker'
 Follow.delete_all
 Post.delete_all
 User.delete_all
+Viewcount.delete_all
+Stream.delete_all
 
 # Reset the Primary Keys
 ActiveRecord::Base.connection.tables.each do |t|
@@ -30,10 +32,15 @@ for i in 1..num_gamers do
     r = Follow.create(user_id: random, follower_id: i)
 end
 
-#Seed Posts, every gamer will have two posts
-for i in 0..num_gamers*2-1 do
+#Seed Posts, stream, and viewcount
+for i in 0..num_gamers do
+    game=Faker::Game.title
+    # each user will have a stream
+    Stream.create(user_id:i, title:game)
     for j in 0..1 do
         # also have the parent_post be random and only for some of the posts
-        Post.create(user_id:i, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(num_gamers/2))
+        Post.create(user_id:i, text:Faker::Quote.robin+" "+game, parent_post:rand(num_gamers/2))
+        # create two viewcounts for the stream
+        Viewcount.create( stream_id:i, viewers:rand(100), timestamp:DateTime.new(2021,j+1,i+1,12))
     end
 end

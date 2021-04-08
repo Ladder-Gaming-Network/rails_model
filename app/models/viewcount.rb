@@ -1,0 +1,2 @@
+class Viewcount < ApplicationRecord
+end

@@ -19,6 +19,8 @@ class User < ApplicationRecord
                                   dependent:   :destroy
     has_many :following, through: :active_relationships, source: :user
 
+    has_many :streams
+
     def followers
         User.find( FollowsHelper.get_user_follows(self.id))
     end
