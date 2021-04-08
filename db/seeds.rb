@@ -4,6 +4,7 @@ require 'faker'
 Follow.delete_all
 Post.delete_all
 User.delete_all
+Interest.delete_all
 
 # Reset the Primary Keys
 ActiveRecord::Base.connection.tables.each do |t|
@@ -30,10 +31,12 @@ for i in 1..num_gamers do
     r = Follow.create(user_id: random, follower_id: i)
 end
 
-#Seed Posts, every gamer will have two posts
+#Seed Posts and interests, every gamer will have two posts of each
 for i in 0..num_gamers*2-1 do
     for j in 0..1 do
+        game=Faker::Game.title
         # also have the parent_post be random and only for some of the posts
-        Post.create(user_id:i, text:Faker::Quote.robin+" "+Faker::Game.title, parent_post:rand(num_gamers/2))
+        Post.create(user_id:i, text:Faker::Quote.robin+" "+game, parent_post:rand(num_gamers/2))
+        Interest.create(user_id:i, interest:game)
     end
 end

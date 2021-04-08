@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interests
   get 'static_pages/home'
   get 'static_pages/profile'
   get '/profile/follow', to: 'static_pages#follow'
