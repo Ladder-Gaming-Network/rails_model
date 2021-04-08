@@ -93,7 +93,15 @@
         </script>
     </div> </br>
 
-    <%= pie_chart User.group(:timezone_code).count %>
+    <div class="chart boxed">
+        <div style="margin: 10px">
+            </br>
+            <p>Viewer history for this stream (data fetched from Twitch API)</p>
+            </br>
+            <%= line_chart User.pluck(:created_at, :timezone_code), xtitle: "Time", ytitle: "Timezone Code" %>
+        </div>
+    </div>
+
 
     <div class="grid-container">
         <div class="boxed">

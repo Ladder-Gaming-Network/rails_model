@@ -38,6 +38,11 @@ p {
   padding: 10px;
 }
 
+.chart {
+  background-color: #e0eaff;
+  margin: 10px;
+}
+
 .inner-profile {
   margin-top: 30px;
   margin-bottom: 30px;

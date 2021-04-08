@@ -63,3 +63,4 @@ gem 'hirb' #db pretty print - Hirb.enable
 gem "chartkick"
 gem "groupdate"
 gem "kimurai"
+gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
