@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '//admin', as: 'rails_admin'
   resources :streams
   resources :viewcounts
   get 'static_pages/home'

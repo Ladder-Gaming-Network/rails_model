@@ -12,7 +12,7 @@ rails g scaffold Interest user_id:integer interest:string
 
 rails g scaffold Stream user_id:integer title:string
 
-rails g scaffold Viewcount stream_id:integer viewers:int, created_at:datetime
+rails g scaffold Viewcount stream_id:integer viewers:integer timestamp:datetime
 
 (user has many streams, streams have many viewcounts)
 
