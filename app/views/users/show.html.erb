@@ -98,7 +98,7 @@
             </br>
             <p>Viewer history for this stream (data fetched from Twitch API)</p>
             </br>
-            <%= line_chart User.pluck(:created_at, :timezone_code), xtitle: "Time", ytitle: "Timezone Code" %>
+            <%= line_chart Viewcount.pluck(:created_at, :viewers), xtitle: "Time", ytitle: "Timezone Code", min: nil, max:nil %>
         </div>
     </div>
 
