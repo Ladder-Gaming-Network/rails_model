@@ -14,7 +14,9 @@ Heroku: https://ladder-gaming.herokuapp.com/
 
 Our main view is the welcome page. This view contains a “carousel” like implementation for the first part of the page. This carousel rotates and displays different images and tag lines. At the top of our application is the navbar. The navbar includes all the different tabs such as “Profile” and also implements a search functionality. The search bar allows users to find and connect with other users on the platform. Our profile view consists of a profile picture, live stream API, description and basic information such as name and timezone. Additionally, you can view your post “feed” in the profile view of our page. The profile view also displays followers and following information.
 
-Currently, new users fill out a form where they provide the information required for a profile. This form is processed and creates the user profile. Another time users interact with forms is with the post mechanism. The form first validates a user id (meaning the user is logged in) and text (not a blank post). After this form is processed, the corresponding followers can then view the post in the “feed” section of the profile.
+Currently, new users fill out a signup form where they provide the information required for a profile, and can login with that information. They can then search for other users through the search tab, and follow other users. The followed user's static posts will then show up in the user's own feed.
+
+A Twitch video is embedded in a user's profile, currently showing a live feed of the streamer Monstercat for all users. The website also displays a chart showing viewer count vs time, displaying viewer count data for an April 7th viewing of Ludwig's stream. These items function as a working proof of concept for our streaming tab.
 
 # URL Routes
 
