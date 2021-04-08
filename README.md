@@ -3,7 +3,9 @@ Cosi 166B
 4/7/21
 
 GitHub link: https://github.com/Ladder-Gaming-Network/rails_model
+
 Heroku: https://ladder-gaming.herokuapp.com/
+
 **_/prototypes contains paper prototypes for the final stage of this project!_**
 
 # Current functionality
@@ -28,7 +30,6 @@ Users: /users
 /users/delete
 /users/1
 
-<<<<<<< HEAD
 Posts: /posts
 /posts/new
 /posts/create
@@ -89,9 +90,5 @@ Add news recommender to /news
 **_RailsAdmin_** gem for admin console
 **_Chartkick_** gem for live viewcount charting
 **_Twitch-api_** gem for viewcount sampling
-=======
-![chart_example](images/chart_example.png)
->>>>>>> b9eb7371ec759e357d0a4200e80c1e3a2db2642b
-
 
 ![chart_example](images/chart_example.png)
