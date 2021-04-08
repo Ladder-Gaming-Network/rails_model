@@ -70,10 +70,15 @@ Name: Follows
 - integer gamer\_ id, integer follower_id (which is a gamer_id)
 
 Associations
+
 User -> Posts (Posts) **_(One to Many)_**
+
 User -> User (Follows) **_(Many to Many)_**
+
 User -> User (Followers) **_(Many to Many)_**
+
 User -> Stream **_(One to Many)_**
+
 Stream -> Viewcount **_(One to Many)_**
 
 # Planned views
