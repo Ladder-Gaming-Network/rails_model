@@ -29,7 +29,7 @@ while true do
         puts("Title: " + stream_info.title)
         puts("View count: " + stream_info.viewer_count.to_s)
         previous_view_count = stream_info.viewer_count
-        Viewcount.create!(stream_id:1, viewer_count:stream_info.viewer_count)
+        Viewcount.create!(stream_id:1, viewers:stream_info.viewer_count)
     end
     sleep(60)
     puts("-----")
