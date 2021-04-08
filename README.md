@@ -91,9 +91,13 @@ Add news recommender to /news
 # Current Dependencies
 
 **_Bootstrap_** for website layout
+
 **_Faker_** gem for initial seeding
+
 **_RailsAdmin_** gem for admin console
+
 **_Chartkick_** gem for live viewcount charting
+
 **_Twitch-api_** gem for viewcount sampling
 
 ![chart_example](images/chart_example.png)
