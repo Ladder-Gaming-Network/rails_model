@@ -81,7 +81,8 @@ while numPoints<3 do
         previous_view_count = stream_info.viewer_count
         Viewcount.create!(stream_id:1, viewers:stream_info.viewer_count)
         numPoints+=1
+    else
+        puts("-----")
+        sleep(60)
     end
-    sleep(60)
-    puts("-----")
 end
