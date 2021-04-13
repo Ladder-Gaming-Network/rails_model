@@ -15,14 +15,14 @@
             <a class="nav-link active" aria-current="page" href="/admin/users">Admin</a>
           </li>
         </ul>
-          <%= form_with url: "/user search", class:"d-flex",method: :get do |form|%>
+          <%= form_with url: "/search", class:"d-flex",method: :get do |form|%>
           <%= form.label :query, "Username" %>
           <%= form.text_field :query %>
           <%= form.submit "Search" %>
            <% end %>
 
         <% if logged_in? %>
-          <li><%= link_to "Profile", "/users/#{current_user.id}", class:"nav-link active" %></li>
+          <li><%= link_to "My Profile", "/users/#{current_user.id}", class:"nav-link active" %></li>
           <li><%= link_to "Log out", logout_path, class:"nav-link active", method: :delete %></li> 
          
     <% else %>
