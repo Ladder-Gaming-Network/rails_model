@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'static_pages/profile'
   get '/profile/follow', to: 'static_pages#follow'
   get '/profile/unfollow', to: 'static_pages#unfollow'
+  get '/users/begin_viewcount_sample', to: 'users#begin_viewcount_sample'
   resources :users
   resources :posts
   resources :follows

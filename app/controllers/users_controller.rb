@@ -1,8 +1,25 @@
 class UsersController < ApplicationController
+  require "twitch-api"
   using SessionsHelper
 
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:show]
+
+  def begin_viewcount_sample
+    client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
+    client_secret = "1lfolprd26gv90uaxj3bxb2x10csju"
+    twitch_client = Twitch::Client.new(
+        client_id: client_id,
+        client_secret: client_secret
+    )
+    username = "monstercat"
+    twitch_id = twitch_client.get_users({login: username}).data.first.id
+
+    stream_info = twitch_client.get_streams({user_id: twitch_id}).data.first
+    Viewcount.create!(stream_id:1, viewers:stream_info.viewer_count)
+    #begin getting viewcounts from twitch
+    #result = %x(bin/rails runner twitch_test.rb)
+  end
 
   # GET /users or /users.json
   def index
@@ -16,6 +33,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+
     current_user
     @user = User.find(params[:id])
     # will use for editing

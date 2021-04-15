@@ -13,3 +13,4 @@ Turbolinks.start();
 ActiveStorage.start();
 
 require("chartkick/chart.js");
+require("packs/twitchchart.js");
