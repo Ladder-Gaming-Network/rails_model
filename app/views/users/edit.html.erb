@@ -1,6 +1,31 @@
-<h1>Editing User</h1>
+<h1>Editing My Profile</h1>
 
-<%= render 'form', user: @user %>
+<div class="row">
+  <div class="col-md-4 offset-4">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+     
+      <%= f.label :lastname %>
+      <%= f.text_field :lastname, class: 'mb-1 form-control' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'mb-1 form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'mb-1 form-control' %>
+
+      <%= f.label :stream_link %>
+      <%=  f.text_field :stream_link, class: 'mb-1 form-control' %>
+
+      <%= f.label :timezone_code %>
+      <%=  f.number_field :timezone_code, in: -12..12, step: 1,class: 'mb-1 form-control' %>
+
+      <%= f.label :description %>
+      <%=  f.text_area :description, class: 'mb-1 form-control' %>
+
+      <%= f.submit "Update my account", class: "mt-2 btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Back', @user %>

@@ -55,7 +55,8 @@ require "twitch-api"
 previous_view_count = 0
 
 numPoints=0
-while numPoints<3 do
+stream_info= "dummy"
+while numPoints<3 && stream_info do
     @twitch_client = Twitch::Client.new(
         client_id: @client_id,
         client_secret: @client_secret
@@ -74,15 +75,18 @@ while numPoints<3 do
     twitch_id = @twitch_client.get_users({login: username}).data.first.id
 
     stream_info = @twitch_client.get_streams({user_id: twitch_id}).data.first
-    if stream_info.viewer_count != previous_view_count then
+    if stream_info && stream_info.viewer_count != previous_view_count then
         puts("Data for Twitch streamer: " + username)
         puts("Title: " + stream_info.title)
         puts("View count: " + stream_info.viewer_count.to_s)
         previous_view_count = stream_info.viewer_count
         Viewcount.create!(stream_id:1, viewers:stream_info.viewer_count)
         numPoints+=1
-    else
+    elsif stream_info
         puts("-----")
         sleep(60)
     end
+end
+if !stream_info
+    puts "User was not online"
 end

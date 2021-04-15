@@ -42,7 +42,9 @@
                 </br>
 
                 <% if @user.id == @current_user.id %>
-                    <button class="btn btn-secondary" onClick="window.location.reload();">Edit Profile</button>
+                    <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
+                    <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
+                    
                 <% elsif Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then %>
                     <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
                         <button class="btn btn-secondary" onClick="window.location.reload();">Unfollow</button>
@@ -136,5 +138,4 @@
         </div>
     </div>
     </br>
-
 </body>
