@@ -31,14 +31,20 @@
                     <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
                     <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
                     
-                <% elsif Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then %>
-                    <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
-                        <button class="btn btn-secondary" onclick="window.location.reload();">Unfollow</button>
-                    <% end %>
+                <% elsif @following then %>
+                    <button class="btn btn-secondary"
+                        data-reflex="click->ProfileReflex#unfollow"
+                        data-user_id="<%= @user.id.to_s %>"
+                        data-current_user_id="<%= @current_user.id.to_s %>"
+                        >Unfollow
+                    </button>
                 <% else %>
-                    <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
-                        <button class="btn btn-secondary" onclick="window.location.reload();">Follow</button>
-                    <% end %>
+                    <button class="btn btn-secondary"
+                        data-reflex="click->ProfileReflex#follow"
+                        data-user_id="<%= @user.id.to_s %>"
+                        data-current_user_id="<%= @current_user.id.to_s %>"
+                    >Follow
+                    </button>
                 <% end %>
 
             </div>

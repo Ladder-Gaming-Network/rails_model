@@ -1,44 +1,43 @@
-<div style="margin:auto;width:60%;" class="boxed">
-<% if @user.stream_link then %>
-    <h1><%= @user.stream_link[11..] + "'s stream" %></h1>
-<% else %>
-    <h1>Stream:</h1>
-<% end %>
+<div style="margin:auto;width:60%;" class="boxed" data-reflex-permanent>
+    <% if @user.stream_link then %>
+        <h1><%= @user.stream_link[11..] + "'s stream" %></h1>
+    <% else %>
+        <h1>Stream:</h1>
+    <% end %>
 
-<% if @stream_status == "offline" then %>
-    <p>Stream is currently offline.</p>
-<% else %>
-    <p><%= @stream.title %></p>  
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed"></div>
+    <% if @stream_status == "offline" then %>
+        <p>Stream is currently offline.</p>
+    <% else %>
+        <p><%= @stream.title %></p>  
+        <!-- Add a placeholder for the Twitch embed -->
+        <div id="twitch-embed"></div>
 
-    <!-- Load the Twitch embed script -->
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <!-- Load the Twitch embed script -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
-    <script type="text/javascript">
-        new Twitch.Embed("twitch-embed", {
-            width: "100%",
-            height: 780,
-            channel: "<%= @user.stream_link[11..] %>",
-    });
-    </script>
-<% end %>
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+                width: "100%",
+                height: 780,
+                channel: "<%= @user.stream_link[11..] %>",
+        });
+        </script>
+    <% end %>
 </div> </br>
 
 <% if @stream_status != "offline" then %>
 <div class="center">
-    <%= link_to '/users/begin_viewcount_sample?username=' + @user.stream_link[11..] + '&twitch_id=' + @stream.id.to_s, remote: true do %>
-        <button class="btn btn-primary btn-lg" onclick="window.location.reload();">Start Tracking</button>
-    <% end %>
-</div>
 
-<div class="chart boxed" id="viewcount-chart">
-    <div style="margin: 10px">
-        </br>
-        <p>Viewer history for this stream</p>
-        </br>
-        <%= line_chart Viewcount.where(stream_id:@stream.id).pluck(:created_at, :viewers), xtitle: "Time", ytitle: "Viewer Count", min: nil, max:nil %>
+    <div class="center">
+        <%= link_to '/users/begin_viewcount_sample?username=' + @user.stream_link[11..] + '&stream_id=' + @stream.id.to_s, remote: true do %>
+            <button class="btn btn-primary btn-lg"">Start Tracking</button>
+        <% end %>
     </div>
 </div>
+
+<div data-reflex-permanent>
+    <%= render partial: "twitch_chart" %>
+</div>
+
 <% end %>

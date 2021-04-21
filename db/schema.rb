@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_192630) do
+ActiveRecord::Schema.define(version: 2021_04_21_213137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2021_04_16_192630) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name"
+    t.string "youtube_id"
+    t.integer "subscriber_count"
+    t.integer "video_count"
+    t.integer "view_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -50,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_192630) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "twitch_id"
+    t.boolean "tracked", default: false
   end
 
   create_table "students", force: :cascade do |t|

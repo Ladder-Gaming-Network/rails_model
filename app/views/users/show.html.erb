@@ -13,43 +13,15 @@
         <%= image_tag("/images/ladder_logo.png") %>
     </div> </br>
     
-    <%= render partial: "profile" %>
+    <div data-reflex-permanent>
+        <%= render partial: "profile" %>
+    </div>
 
     </br> </br>
     
     <%= render partial: "twitch_layout" %>
 
-    <div class="grid-container">
-        <div class="boxed">
-                <div class="inner-profile">
-                    <p><strong>Posts:</strong></p>
-                <table>
-                <% @user.posts.each do |post| %>
-                    <tr>
-                    <td><p><%= post.text %></p></td>
-                    </tr>
-                <% end %>
-                </table>
-                </br>
-
-                <p><strong>Following: <%= @user.following.count %></strong></p>
-                <% @user.following.each do |follower| %>
-                    <tr>
-                    <td><p><%= follower.username %></p></td>
-                    </tr>
-                <% end %>
-                </table>
-                <br>
-                <table>
-                <p><strong>Followers: <%= @user.followers.count %></strong></p>
-                <% @user.followers.each do |follower| %>
-                    <tr>
-                    <td><p><%= follower.username %></p></td>
-                    </tr>
-                <% end %>
-                </table>
-            </div>
-        </div>
-    </div>
     </br>
+
+    <%= render partial: "follow_info" %>
 </body>
