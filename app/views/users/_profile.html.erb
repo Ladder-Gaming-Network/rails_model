@@ -1,0 +1,58 @@
+<div class="grid-container">
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1> <strong> Profile </strong> </h1>
+                </br>
+                <%= image_tag("/images/gamer_pic.jpg") %>
+                </br> </br>
+                <p>
+                    <strong>Username:</strong>
+                    <%= @user.username %>
+                </p>
+                <p>
+                    <strong>Last name:</strong>
+                    <%= @user.lastname %>
+                </p>
+                <p>
+                    <strong>Description:</strong>
+                    <%= @user.description %>
+                </p>
+                <p>
+                    <strong>Timezone code:</strong>
+                    <%= @user.timezone_code %>
+                </p>
+                <p>
+                <strong>Stream link:</strong>
+                <%= @user.stream_link %>
+                </p>
+                </br>
+
+                <% if @user.id == @current_user.id %>
+                    <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
+                    <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
+                    
+                <% elsif Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then %>
+                    <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
+                        <button class="btn btn-secondary" onclick="window.location.reload();">Unfollow</button>
+                    <% end %>
+                <% else %>
+                    <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
+                        <button class="btn btn-secondary" onclick="window.location.reload();">Follow</button>
+                    <% end %>
+                <% end %>
+
+            </div>
+        </div>
+
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1><strong>Feed</strong></h1>
+                </br>
+                <% @feed_posts.each do |post| %>
+                    <tr>
+                    <td><p><%= post %></p></td>
+                    </tr>
+                <% end %>
+            </div>
+        </div>
+    </div>

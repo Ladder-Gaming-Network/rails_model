@@ -13,110 +13,11 @@
         <%= image_tag("/images/ladder_logo.png") %>
     </div> </br>
     
-    <div class="grid-container">
-        <div class="boxed">
-            <div class="inner-profile">
-                <h1> <strong> Profile </strong> </h1>
-                </br>
-                <%= image_tag("/images/gamer_pic.jpg") %>
-                </br> </br>
-                <p>
-                    <strong>Username:</strong>
-                    <%= @user.username %>
-                </p>
-                <p>
-                    <strong>Last name:</strong>
-                    <%= @user.lastname %>
-                </p>
-                <p>
-                    <strong>Description:</strong>
-                    <%= @user.description %>
-                </p>
-                <p>
-                    <strong>Timezone code:</strong>
-                    <%= @user.timezone_code %>
-                </p>
-                <p>
-                <strong>Stream link:</strong>
-                <%= @user.stream_link %>
-                </p>
-                </br>
-
-                <% if @user.id == @current_user.id %>
-                    <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
-                    <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
-                    
-                <% elsif Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then %>
-                    <%= link_to '/profile/unfollow?user_id=' + @user.id.to_s, remote: true do %>
-                        <button class="btn btn-secondary" onclick="window.location.reload();">Unfollow</button>
-                    <% end %>
-                <% else %>
-                    <%= link_to '/profile/follow?user_id=' + @user.id.to_s, remote: true do %>
-                        <button class="btn btn-secondary" onclick="window.location.reload();">Follow</button>
-                    <% end %>
-                <% end %>
-
-            </div>
-        </div>
-
-        <div class="boxed">
-            <div class="inner-profile">
-                <h1><strong>Feed</strong></h1>
-                </br>
-                <% @feed_posts.each do |post| %>
-                    <tr>
-                    <td><p><%= post %></p></td>
-                    </tr>
-                <% end %>
-            </div>
-        </div>
-    </div>
+    <%= render partial: "profile" %>
 
     </br> </br>
     
-    <div style="margin:auto;width:60%;" class="boxed">
-        <% if @user.stream_link then %>
-            <h1><%= @user.stream_link[11..] + "'s stream" %></h1>
-        <% else %>
-            <h1>Stream:</h1>
-        <% end %>
-
-        <% if @stream_status == "offline" then %>
-            <p>Stream is currently offline.</p>
-        <% else %>
-            <p><%= @stream.title %></p>  
-            <!-- Add a placeholder for the Twitch embed -->
-            <div id="twitch-embed"></div>
-
-            <!-- Load the Twitch embed script -->
-            <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
-            <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
-            <script type="text/javascript">
-                new Twitch.Embed("twitch-embed", {
-                    width: "100%",
-                    height: 780,
-                    channel: "<%= @user.stream_link[11..] %>",
-            });
-            </script>
-        <% end %>
-    </div> </br>
-
-    <div class="center">
-        <%= link_to '/users/begin_viewcount_sample?username=' + @user.stream_link[11..] + '&twitch_id=' + @stream.id.to_s, remote: true do %>
-            <button class="btn btn-primary btn-lg" onclick="window.location.reload();">Start Tracking</button>
-        <% end %>
-    </div>
-
-    <div class="chart boxed" id="viewcount-chart">
-        <div style="margin: 10px">
-            </br>
-            <p>Viewer history for this stream</p>
-            </br>
-            <%= line_chart Viewcount.where(stream_id:@stream.id).pluck(:created_at, :viewers), xtitle: "Time", ytitle: "Viewer Count", min: nil, max:nil %>
-        </div>
-    </div>
-
+    <%= render partial: "twitch_layout" %>
 
     <div class="grid-container">
         <div class="boxed">
