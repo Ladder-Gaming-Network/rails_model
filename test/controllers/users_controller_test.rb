@@ -1,13 +1,12 @@
 require "test_helper"
 require "sessions_controller"
+require "sessions_helper"
 class UsersControllerTest < ActionDispatch::IntegrationTest
   #include SessionsController
   setup do
     @user = users(:one)
-    # attempt to log in user
-    #params[:session][:password]="123456"
-    #a=SessionsController.new()
-    #a.create()
+    post login_path, params: { session: { username: "admin",
+      password: "12346" } }
   end
 
   test "should get index" do
@@ -48,7 +47,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count', -1) do
       delete user_url(@user)
     end
-
     assert_redirected_to users_url
   end
 end
