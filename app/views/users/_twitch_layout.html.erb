@@ -27,17 +27,17 @@
 </div> </br>
 
 <% if @stream_status != "offline" then %>
-<div class="center">
+    <% if !@stream.tracked then %>
+        <div class="center">
+            <div class="center">
+                <%= link_to '/users/begin_viewcount_sample?username=' + @user.stream_link[11..] + '&stream_id=' + @stream.id.to_s, remote: true do %>
+                    <button class="btn btn-primary btn-lg"">Start Tracking</button>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
 
-    <div class="center">
-        <%= link_to '/users/begin_viewcount_sample?username=' + @user.stream_link[11..] + '&stream_id=' + @stream.id.to_s, remote: true do %>
-            <button class="btn btn-primary btn-lg"">Start Tracking</button>
-        <% end %>
+    <div data-reflex-permanent>
+        <%= render partial: "twitch_chart" %>
     </div>
-</div>
-
-<div data-reflex-permanent>
-    <%= render partial: "twitch_chart" %>
-</div>
-
 <% end %>

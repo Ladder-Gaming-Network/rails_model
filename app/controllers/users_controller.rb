@@ -42,6 +42,7 @@ include CableReady::Broadcaster
     @user = User.find(params[:id])
     @stream_status = "offline"
 
+    #get stream data
     if !@user.stream_link.nil? then
 
       client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
@@ -59,6 +60,10 @@ include CableReady::Broadcaster
         @stream_status = "online"
         fetched_stream = Stream.where(id:stream_info.id).first
         if fetched_stream.nil? then
+          #if id has changed, destroy last stream + viewcounts
+          stream_to_delete = Stream.where(user_id:@user.id).first
+          Viewcount.where(stream_id:stream_to_delete.id).destroy_all
+          stream_to_delete.destroy
           @stream = Stream.create(id:stream_info.id, user_id:@user.id, title:stream_info.title)
         else
           @stream = fetched_stream
