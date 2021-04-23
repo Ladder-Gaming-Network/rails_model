@@ -1,8 +1,25 @@
 class UsersController < ApplicationController
+include CableReady::Broadcaster
+
+  require "twitch-api"
   using SessionsHelper
 
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:show]
+
+  def render_chart
+    render json: Viewcount.where(stream_id:params[:stream_id]).pluck(:created_at, :viewers)
+  end
+
+  def begin_viewcount_sample
+    #begin getting viewcounts from twitch
+    if !Stream.where(id: params[:stream_id]).first.tracked then
+      stream = Stream.where(id: params[:stream_id]).first
+      stream.tracked = true
+      stream.save
+      FetchViewcountsJob.perform_later(params[:username], params[:stream_id])
+    end
+  end
 
   # GET /users or /users.json
   def index
@@ -14,16 +31,51 @@ class UsersController < ApplicationController
     end
   end
 
+  def counter
+    @count ||= session[:count]
+  end
+
   # GET /users/1 or /users/1.json
   def show
+
     current_user
     @user = User.find(params[:id])
+    @stream_status = "offline"
+
+    if !@user.stream_link.nil? then
+
+      client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
+      client_secret = "1lfolprd26gv90uaxj3bxb2x10csju"
+      twitch_client = Twitch::Client.new(
+          client_id: client_id,
+          client_secret: client_secret
+      )
+
+      username = @user.stream_link[11..]
+      twitch_id = twitch_client.get_users({login: username}).data.first.id
+      stream_info = twitch_client.get_streams({user_id: twitch_id}).data.first
+
+      if (!stream_info.nil?) then
+        @stream_status = "online"
+        fetched_stream = Stream.where(id:stream_info.id).first
+        if fetched_stream.nil? then
+          @stream = Stream.create(id:stream_info.id, user_id:@user.id, title:stream_info.title)
+        else
+          @stream = fetched_stream
+        end
+      end
+    end
+
     # will use for editing
     # if !current_user?(@user)
     #   flash[:danger]="You can only view your own user information!"
     #   redirect_to "/users/#{current_user.id}"
     # end
     @follows = Follow.all
+    @following = false
+    if Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then
+      @following = true
+    end
     #get posts that have user id = user.following
     @feed_posts = []
     @current_user.following.each do |followed|
@@ -31,10 +83,6 @@ class UsersController < ApplicationController
         @feed_posts.append(post.text + " - " + followed.username)
       end
     end
-
-    # get current user if logged in
-    # if profile is same as user, edit profile
-    # if profile is different, have follow button
 
   # GET /users/new
   def new

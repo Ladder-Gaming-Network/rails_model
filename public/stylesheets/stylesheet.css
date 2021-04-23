@@ -10,8 +10,8 @@
 
 .boxed {
   border: 10px solid gray;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   margin-right: 100px;
   margin-left: 100px;
   background-color: #b6b6b6;
@@ -19,6 +19,8 @@
 
 .profile-section {
   background-color: #4c3058;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 html {

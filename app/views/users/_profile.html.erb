@@ -1,0 +1,64 @@
+<div class="grid-container">
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1> <strong> Profile </strong> </h1>
+                </br>
+                <%= image_tag("/images/gamer_pic.jpg") %>
+                </br> </br>
+                <p>
+                    <strong>Username:</strong>
+                    <%= @user.username %>
+                </p>
+                <p>
+                    <strong>Last name:</strong>
+                    <%= @user.lastname %>
+                </p>
+                <p>
+                    <strong>Description:</strong>
+                    <%= @user.description %>
+                </p>
+                <p>
+                    <strong>Timezone code:</strong>
+                    <%= @user.timezone_code %>
+                </p>
+                <p>
+                <strong>Stream link:</strong>
+                <%= @user.stream_link %>
+                </p>
+                </br>
+
+                <% if @user.id == @current_user.id %>
+                    <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
+                    <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
+                    
+                <% elsif @following then %>
+                    <button class="btn btn-secondary"
+                        data-reflex="click->ProfileReflex#unfollow"
+                        data-user_id="<%= @user.id.to_s %>"
+                        data-current_user_id="<%= @current_user.id.to_s %>"
+                        >Unfollow
+                    </button>
+                <% else %>
+                    <button class="btn btn-secondary"
+                        data-reflex="click->ProfileReflex#follow"
+                        data-user_id="<%= @user.id.to_s %>"
+                        data-current_user_id="<%= @current_user.id.to_s %>"
+                    >Follow
+                    </button>
+                <% end %>
+
+            </div>
+        </div>
+
+        <div class="boxed">
+            <div class="inner-profile">
+                <h1><strong>Feed</strong></h1>
+                </br>
+                <% @feed_posts.each do |post| %>
+                    <tr>
+                    <td><p><%= post %></p></td>
+                    </tr>
+                <% end %>
+            </div>
+        </div>
+    </div>

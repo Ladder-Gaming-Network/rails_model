@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_061351) do
+ActiveRecord::Schema.define(version: 2021_04_21_213137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,22 @@ ActiveRecord::Schema.define(version: 2021_04_12_061351) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
+  create_table "channels", force: :cascade do |t|
+    t.string "name"
+    t.string "youtube_id"
+    t.integer "subscriber_count"
+    t.integer "video_count"
+    t.integer "view_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["follower_id", "user_id"], name: "index_follows_on_follower_id_and_user_id", unique: true
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -50,6 +58,14 @@ ActiveRecord::Schema.define(version: 2021_04_12_061351) do
   create_table "streams", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "twitch_id"
+    t.boolean "tracked", default: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_061351) do
   end
 
   create_table "viewcounts", force: :cascade do |t|
-    t.integer "stream_id"
+    t.bigint "stream_id"
     t.integer "viewers"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

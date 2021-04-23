@@ -9,15 +9,6 @@ while true do
     @twitch_client = Twitch::Client.new(
         client_id: @client_id,
         client_secret: @client_secret
-
-        ## this is default
-        # token_type: :application,
-
-        ## this can be required by some Twitch end-points
-        # scopes: scopes,
-
-        ## if you already have one
-        # access_token: access_token
     )
 
     username = "ludwig"
