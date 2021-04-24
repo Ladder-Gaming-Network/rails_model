@@ -11,17 +11,22 @@
 
     <div style="text-align:center">
         <%= image_tag("/images/ladder_logo.png") %>
-    </div> </br>
-    
-    <div data-reflex-permanent>
-        <%= render partial: "profile" %>
     </div>
 
-    </br> </br>
+    <div>
+        <%= render partial: "profile" %>
+    </div>
     
-    <%= render partial: "twitch_layout" %>
+    <div>
+        <%= render partial: "youtube_layout" %>
+    </div>
+    
+    <div>
+        <%= render partial: "twitch_layout" %>
+    </div>
 
-    </br>
-
-    <%= render partial: "follow_info" %>
+    <div>
+        <%= render partial: "follow_info" %>
+    </div>
+    
 </body>

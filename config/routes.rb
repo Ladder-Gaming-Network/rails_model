@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   
   resources :streams
   resources :viewcounts
-  get 'static_pages/home'
-  get 'static_pages/profile'
   get '/users/render_chart', to: 'users#render_chart'
   get '/users/begin_viewcount_sample', to: 'users#begin_viewcount_sample'
   resources :users

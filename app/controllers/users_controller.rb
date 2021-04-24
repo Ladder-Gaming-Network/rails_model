@@ -42,20 +42,24 @@ include CableReady::Broadcaster
     @user = User.find(params[:id])
     @stream_status = "offline"
 
-    #get stream data
+    #get twitch stream data, if link available
     if !@user.stream_link.nil? then
 
+      #link to twitch api via gem
       client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
       client_secret = "1lfolprd26gv90uaxj3bxb2x10csju"
       twitch_client = Twitch::Client.new(
           client_id: client_id,
           client_secret: client_secret
       )
-
       username = @user.stream_link[11..]
-      twitch_id = twitch_client.get_users({login: username}).data.first.id
-      stream_info = twitch_client.get_streams({user_id: twitch_id}).data.first
+      user_fetch = twitch_client.get_users({login: username}).data.first
+      if !user_fetch.nil? then
+        twitch_id = user_fetch.id
+        stream_info = twitch_client.get_streams({user_id: twitch_id}).data.first
+      end
 
+      #see if stream is active
       if (!stream_info.nil?) then
         @stream_status = "online"
         fetched_stream = Stream.where(id:stream_info.id).first
@@ -66,10 +70,22 @@ include CableReady::Broadcaster
           stream_to_delete.destroy
           @stream = Stream.create(id:stream_info.id, user_id:@user.id, title:stream_info.title)
         else
+          #otherwise, just continue
           @stream = fetched_stream
         end
       end
     end
+
+    #get youtube channel data
+
+    #link to youtubeapi via gem
+    api_key = "AIzaSyDtW_pu7jl1TwQb6bG0fkphbPuLKXxpdA8"
+    Yt.configure do |config|
+      config.api_key = api_key
+    end
+
+    #temporary default: MrBeast
+    @channel = Yt::Channel.new id: "UCX6OQ3DkcsbYNE6H8uQQuVA"
 
     # will use for editing
     # if !current_user?(@user)
