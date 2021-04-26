@@ -354,6 +354,7 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.4.4)
   byebug
+  cable_ready
   capybara (>= 3.26)
   chartkick
   faker
@@ -366,6 +367,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.2, >= 6.1.2.1)
+  redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
   spring
