@@ -1,14 +1,12 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Id</th>
       <th>User</th>
       <th>Text</th>
-      <th>Parent post</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +14,9 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.id %></td>
-        <td><%= post.user_id %></td>
+        <td><%= User.find(post.user_id).username %></td>
         <td><%= post.text %></td>
-        <td><%= post.parent_post %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
