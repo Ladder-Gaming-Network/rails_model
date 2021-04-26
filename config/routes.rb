@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
+  
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   resources :streams

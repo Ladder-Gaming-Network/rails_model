@@ -3,7 +3,7 @@
 one:
   username: admin
   lastname: MyString
-  stream_link: MyString
+  stream_link: twitch.com/xqcow
   description: MyString
   timezone_code: 1
   admin_permissions: true
@@ -13,13 +13,13 @@ one:
 two:
   username: MyString
   lastname: MyString
-  stream_link: MyString
+  stream_link:  twitch.com/xqcow
   description: MyString
   timezone_code: 1
 
 three:
   username: MyString
   lastname: MyString
-  stream_link: MyString
+  stream_link: twitch.com/xqcow
   description: MyString
   timezone_code: 1

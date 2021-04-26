@@ -10,10 +10,12 @@
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/users">Users</a>
           </li>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin/users">Admin</a>
-          </li>
+       <% if admin? %>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/admin/users">Admin</a>
+        </li>
+        <% end %>
         </ul>
           <%= form_with url: "/search", class:"d-flex",method: :get do |form|%>
           <%= form.label :query, "Username" %>

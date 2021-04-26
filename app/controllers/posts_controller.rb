@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    #debugger
   end
 
   # GET /posts/1/edit
@@ -25,16 +26,17 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    
+    # add user id server side so user can't psot as a different suer
+    @post_params=post_params
+    @post_params["user_id"]=current_user.id
+    @post = Post.new(@post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to "/users/#{current_user.id}"
+    else 
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @post.errors, status: :unprocessable_entity }
     end
   end
 
@@ -68,6 +70,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:gamer_id, :text, :parent_post)
+      params.require(:post).permit(:text)
     end
 end
