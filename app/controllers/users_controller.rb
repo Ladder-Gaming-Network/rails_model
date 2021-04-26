@@ -17,7 +17,7 @@ include CableReady::Broadcaster
       stream = Stream.where(id: params[:stream_id]).first
       stream.tracked = true
       stream.save
-      FetchViewcountsJob.perform_later(params[:username], params[:stream_id])
+      #FetchViewcountsJob.perform_later()
     end
   end
 
@@ -66,8 +66,10 @@ include CableReady::Broadcaster
         if fetched_stream.nil? then
           #if id has changed, destroy last stream + viewcounts
           stream_to_delete = Stream.where(user_id:@user.id).first
-          Viewcount.where(stream_id:stream_to_delete.id).destroy_all
-          stream_to_delete.destroy
+          if !stream_to_delete.nil? then
+            Viewcount.where(stream_id:stream_to_delete.id).destroy_all
+            stream_to_delete.destroy
+          end
           @stream = Stream.create(id:stream_info.id, user_id:@user.id, title:stream_info.title)
         else
           #otherwise, just continue
@@ -85,7 +87,7 @@ include CableReady::Broadcaster
     end
 
     #temporary default: MrBeast
-    @channel = Yt::Channel.new id: "UCX6OQ3DkcsbYNE6H8uQQuVA"
+    @channel = Yt::Channel.new id: @user.youtube_id
 
     # will use for editing
     # if !current_user?(@user)
@@ -157,6 +159,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :lastname, :stream_link, :description, :timezone_code,:password,:password_confirmation)
+      params.require(:user).permit(:username, :lastname, :stream_link, :description, :timezone_code,:password,:password_confirmation,:youtube_id)
     end
 end
