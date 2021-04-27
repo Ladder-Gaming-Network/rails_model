@@ -28,7 +28,6 @@ Users: /users
 /users/delete
 /users/1
 
-<<<<<<< HEAD
 Posts: /posts
 /posts/new
 /posts/create
@@ -91,4 +90,3 @@ Add news recommender to /news
 **_Twitch-api_** gem for viewcount sampling
 =======
 ![chart_example](images/chart_example.png)
->>>>>>> b9eb7371ec759e357d0a4200e80c1e3a2db2642b
