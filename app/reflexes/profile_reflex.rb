@@ -33,8 +33,10 @@ class ProfileReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
   def follow
-    Follow.create(user_id: element.dataset[:user_id], follower_id: element.dataset[:current_user_id])
-    @following = true
+    unless Follow.where(user_id:element.dataset[:user_id], follower_id: element.dataset[:current_user_id]).exists?
+      Follow.create(user_id: element.dataset[:user_id], follower_id: element.dataset[:current_user_id])
+      @following = true
+    end
   end
 
   def unfollow

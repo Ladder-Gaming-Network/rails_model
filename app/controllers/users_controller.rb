@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 include CableReady::Broadcaster
-
-  require "twitch-api"
   using SessionsHelper
+  require_relative("../controllers/scripts/twitch_data.rb")
+  require_relative("../controllers/scripts/youtube_data.rb")
 
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:show]
@@ -12,12 +12,16 @@ include CableReady::Broadcaster
   end
 
   def begin_viewcount_sample
-    #begin getting viewcounts from twitch
+    #start job upon first stream tracking
+    if Stream.where(tracked: true).count == 0 then
+      ViewcountFetchWorker.perform_async
+    end
+
+    #mark current stream as tracked
     if !Stream.where(id: params[:stream_id]).first.tracked then
       stream = Stream.where(id: params[:stream_id]).first
       stream.tracked = true
       stream.save
-      #FetchViewcountsJob.perform_later()
     end
   end
 
@@ -40,72 +44,33 @@ include CableReady::Broadcaster
 
     current_user
     @user = User.find(params[:id])
+
+    #Twitch
     @stream_status = "offline"
-
-    #get twitch stream data, if link available
     if !@user.stream_link.nil? then
-
-      #link to twitch api via gem
-      client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
-      client_secret = "1lfolprd26gv90uaxj3bxb2x10csju"
-      twitch_client = Twitch::Client.new(
-          client_id: client_id,
-          client_secret: client_secret
-      )
-      username = @user.stream_link[11..]
-      user_fetch = twitch_client.get_users({login: username}).data.first
-      if !user_fetch.nil? then
-        twitch_id = user_fetch.id
-        stream_info = twitch_client.get_streams({user_id: twitch_id}).data.first
-      end
-
-      #see if stream is active
-      if (!stream_info.nil?) then
+      @stream = TwitchData.get_stream(@user.id, @user.stream_link[11..])
+      if !@stream.nil? then
         @stream_status = "online"
-        fetched_stream = Stream.where(id:stream_info.id).first
-        if fetched_stream.nil? then
-          #if id has changed, destroy last stream + viewcounts
-          stream_to_delete = Stream.where(user_id:@user.id).first
-          if !stream_to_delete.nil? then
-            Viewcount.where(stream_id:stream_to_delete.id).destroy_all
-            stream_to_delete.destroy
-          end
-          @stream = Stream.create(id:stream_info.id, user_id:@user.id, title:stream_info.title)
-        else
-          #otherwise, just continue
-          @stream = fetched_stream
-        end
       end
     end
 
-    #get youtube channel data
+    #Youtube
+    @channel = YoutubeData.get_channel_info(@user.youtube_id)
 
-    #link to youtubeapi via gem
-    api_key = "AIzaSyDtW_pu7jl1TwQb6bG0fkphbPuLKXxpdA8"
-    Yt.configure do |config|
-      config.api_key = api_key
-    end
-
-    #temporary default: MrBeast
-    @channel = Yt::Channel.new id: @user.youtube_id
-
-    # will use for editing
-    # if !current_user?(@user)
-    #   flash[:danger]="You can only view your own user information!"
-    #   redirect_to "/users/#{current_user.id}"
-    # end
-    @follows = Follow.all
+    #Follows
     @following = false
     if Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then
       @following = true
     end
-    #get posts that have user id = user.following
+
+    #Feed: get posts that have user id = user.following
     @feed_posts = []
     @current_user.following.each do |followed|
       Post.where(user_id: followed.id).each do |post|
         @feed_posts.append(post.text + " - " + followed.username)
       end
     end
+    @online_users = TwitchData.get_live_followed(@current_user)
 
   # GET /users/new
   def new

@@ -66,3 +66,4 @@ gem "kimurai"
 gem "stimulus_reflex"
 gem 'yt', '~> 0.32.0'
 gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
+gem 'sidekiq'

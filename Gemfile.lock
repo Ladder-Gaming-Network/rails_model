@@ -291,6 +291,10 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -368,6 +372,7 @@ DEPENDENCIES
   rails (~> 6.1.2, >= 6.1.2.1)
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   spring
   stimulus_reflex
   turbolinks (~> 5)
