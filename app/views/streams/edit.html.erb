@@ -1,6 +1,9 @@
-<h1>Editing Stream</h1>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">Edit Stream</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Streams', streams_path, class: 'primary-button' %>
+    <%= link_to 'Show', streams_path(@stream), class: 'primary-button' %>
+  </div>
+</div>
 
 <%= render 'form', stream: @stream %>
-
-<%= link_to 'Show', @stream %> |
-<%= link_to 'Back', streams_path %>

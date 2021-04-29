@@ -1,42 +1,98 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
+    <%= form_with(model: user) do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+     
+      <div class="form-container">
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :lastname %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :lastname, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :username %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :username, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :password %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.password_field :password, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :password_confirmation, "Confirmation" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.password_field :password_confirmation, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :stream_link %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :stream_link, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :timezone_code %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.number_field :timezone_code, in: -12..12, step: 1, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :description %>
+            </div>
+            <div class="col-lg-8">
+              <%=  f.text_area :description, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= f.submit "Update my account", class: "btn primary-button w-100" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stream_link %>
-    <%= form.text_field :stream_link %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :timezone_code %>
-    <%= form.number_field :timezone_code %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

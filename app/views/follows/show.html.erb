@@ -1,14 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">Follows</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Follows', follows_path, class: 'primary-button' %>
+    <%= link_to 'Edit', edit_follow_path(@follow), class: 'primary-button' %>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @follow.user_id %>
-</p>
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
+    <div class="form-container">
+      <div class="form-item">
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>User</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @follow.user_id %></label>
+          </div>
+        </div>
 
-<p>
-  <strong>Follower:</strong>
-  <%= @follow.follower_id %>
-</p>
-
-<%= link_to 'Edit', edit_follow_path(@follow) %> |
-<%= link_to 'Back', follows_path %>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>Follower</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @follow.follower_id %></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

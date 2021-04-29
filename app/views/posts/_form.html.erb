@@ -1,32 +1,54 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
+    <%= form_with(model: post) do |f| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+     
+      <div class="form-container">
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :user_id %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.number_field :user_id, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :text %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :text, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :parent_post %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.number_field :parent_post, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= f.submit "Submit", class: "btn primary-button w-100" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
-  </div>
-
-  <div class="field">
-    <%= form.label :parent_post %>
-    <%= form.number_field :parent_post %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

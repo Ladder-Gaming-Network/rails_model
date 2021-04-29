@@ -1,36 +1,38 @@
-<nav class="navbar mb-2">
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Ladder</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/users">Users</a>
-          </li>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin/users">Admin</a>
-          </li>
-        </ul>
-          <%= form_with url: "/search", class:"d-flex",method: :get do |form|%>
-          <%= form.label :query, "Username" %>
-          <%= form.text_field :query %>
-          <%= form.submit "Search" %>
-           <% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%= root_path %>"><img src="/images/ladder_logo.png" class="brand-icon"></a>
+  <button class="navbar-toggler primary-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <% if logged_in? %>
-          <li style="color:gray">You are logged in as <%= current_user.username %></li>
-          <li><%= link_to "My Profile", "/users/#{current_user.id}", class:"nav-link active" %></li>
-          <li><%= link_to "Log out", logout_path, class:"nav-link active", method: :delete %></li> 
-         
-    <% else %>
-        <li><%= link_to "Log in", login_path, class:"nav-link active" %></li> 
-        <li><%= link_to "Sign up", signup_path, class:"nav-link active" %></li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/users">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/users">Admin</a>
+      </li>
+    </ul>
+    <%= form_with url: "/search", class: "form-inline my-2 my-lg-0 user-search-form mx-auto", method: :get do |form| %>
+      <%= form.text_field :query, class: 'form-control mr-sm-2 query-input', placeholder: 'Username' %>
+      <%= form.submit "Search", class: 'btn primary-button my-2 my-sm-0 ' %>
     <% end %>
-      </div>
-    </div>
-  </nav>
+    <ul class="navbar-nav">
+      <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to "My Profile", "/users/#{current_user.id}", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log out", logout_path, class: "nav-link", method: :delete %>
+        </li> 
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Log in", login_path, class: "nav-link" %>
+        </li> 
+        <li class="nav-item">
+          <%= link_to "Sign up", signup_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>

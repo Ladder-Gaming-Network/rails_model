@@ -1,14 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="resource-heading-container d-flex justify-content-between">
+  <h1 class="heading">Stream</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Streams', streams_path, class: 'primary-button' %>
+    <%= link_to 'Edit', edit_stream_path(@stream), class: 'primary-button' %>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @stream.user_id %>
-</p>
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
+    <div class="form-container">
+      <div class="form-item">
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>User</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @stream.user_id %></label>
+          </div>
+        </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @stream.title %>
-</p>
-
-<%= link_to 'Edit', edit_stream_path(@stream) %> |
-<%= link_to 'Back', streams_path %>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>Title</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @stream.title %></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

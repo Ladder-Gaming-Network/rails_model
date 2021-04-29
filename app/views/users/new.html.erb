@@ -1,38 +1,92 @@
-<h1>New User</h1>
+<div class="resource-heading-container">
+  <h1 class="heading">Sign Up</h1>
+</div>
 
-<h1 class='text-center'>Sign up</h1>
-
-<div class="row">
-  <div class="col-md-4 offset-4">
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages' %>
      
-      <%= f.label :lastname %>
-      <%= f.text_field :lastname, class: 'mb-1 form-control' %>
+      <div class="form-container">
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :lastname %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :lastname, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :username %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :username, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :password %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.password_field :password, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :password_confirmation, "Confirmation" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.password_field :password_confirmation, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      <%= f.label :stream_link %>
-      <%=  f.text_field :stream_link, class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :stream_link %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :stream_link, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      <%= f.label :youtube_id %>
-      <%=  f.text_field :youtube_id, class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :timezone_code %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.number_field :timezone_code, in: -12..12, step: 1, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
 
-      <%= f.label :timezone_code %>
-      <%=  f.number_field :timezone_code, in: -12..12, step: 1,class: 'mb-1 form-control' %>
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :description %>
+            </div>
+            <div class="col-lg-8">
+              <%=  f.text_area :description, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <%= f.label :description %>
-      <%=  f.text_area :description, class: 'mb-1 form-control' %>
-
-      <%= f.submit "Create my account", class: "mt-2 btn btn-primary" %>
+      <%= f.submit "Create my account", class: "btn primary-button w-100" %>
     <% end %>
   </div>
 </div>

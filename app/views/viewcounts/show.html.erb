@@ -1,19 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="resource-heading-container d-flex justify-content-between">
+  <h1 class="heading">Stream</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Streams', viewcounts_path, class: 'primary-button' %>
+    <%= link_to 'Edit', edit_viewcount_path(@viewcount), class: 'primary-button' %>
+  </div>
+</div>
 
-<p>
-  <strong>Stream:</strong>
-  <%= @viewcount.stream_id %>
-</p>
+<div class="row no-gutters">
+  <div class="col-md-8 offset-2">
+    <div class="form-container">
+      <div class="form-item">
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>Stream</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @viewcount.stream_id %></label>
+          </div>
+        </div>
 
-<p>
-  <strong>Viewers:</strong>
-  <%= @viewcount.viewers %>
-</p>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>Viewers</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @viewcount.viewers %></label>
+          </div>
+        </div>
 
-<p>
-  <strong>Created At:</strong>
-  <%= @viewcount.created_at%>
-</p>
-
-<%= link_to 'Edit', edit_viewcount_path(@viewcount) %> |
-<%= link_to 'Back', viewcounts_path %>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <label>Created At</label>
+          </div>
+          <div class="col-lg-6">
+            <label><%= @viewcount.created_at%></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
