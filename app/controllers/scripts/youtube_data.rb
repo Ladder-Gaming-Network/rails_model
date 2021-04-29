@@ -1,5 +1,6 @@
-require_relative("../scripts/api_keys.rb")
 # frozen_string_literal: true
+
+require_relative('../scripts/api_keys')
 
 class YoutubeData
   def self.get_channel_info(youtube_id)

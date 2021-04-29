@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2021_04_23_190859) do
     t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id", "user_id"], name: "index_follows_on_follower_id_and_user_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "interest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -62,12 +72,6 @@ ActiveRecord::Schema.define(version: 2021_04_23_190859) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "twitch_id"
     t.boolean "tracked", default: false
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

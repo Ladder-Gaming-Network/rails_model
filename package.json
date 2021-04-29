@@ -10,7 +10,7 @@
     "chart.js": "^3.0.2",
     "chartkick": "^4.0.2",
     "stimulus": "^2.0.0",
-    "stimulus_reflex": "3.4.1",
+    "stimulus_reflex": "^3.4.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
