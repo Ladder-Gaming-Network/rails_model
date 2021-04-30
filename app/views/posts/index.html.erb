@@ -1,27 +1,32 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="resource-heading-container d-flex justify-content-between">
+  <h1 class="heading">Follows</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'New Post', new_post_path, class: 'primary-button' %>
+  </div>
+</div>
 
-  <tbody>
-    <% @posts.each do |post| %>
+<div class="resource-body-container">
+  <table class="table table-striped resource-table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User</th>
+        <th scope="col">Text</th>
+        <th scope="col">Parent post</th>
+        <th scope="col" colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
       <tr>
         <td><%= User.find(post.user_id).username %></td>
         <td><%= post.text %></td>
         <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    </tbody>
+  </table>
+</div>

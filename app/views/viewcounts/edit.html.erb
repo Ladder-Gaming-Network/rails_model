@@ -1,6 +1,9 @@
-<h1>Editing Viewcount</h1>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">Edit Stream</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Streams', viewcounts_path, class: 'primary-button' %>
+    <%= link_to 'Show', @viewcount, class: 'primary-button' %>
+  </div>
+</div>
 
 <%= render 'form', viewcount: @viewcount %>
-
-<%= link_to 'Show', @viewcount %> |
-<%= link_to 'Back', viewcounts_path %>

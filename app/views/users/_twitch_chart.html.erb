@@ -3,6 +3,6 @@
         </br>
         <p>Viewer history for this stream</p>
         </br>
-        <%= line_chart "/users/render_chart?stream_id=" + @stream.id.to_s, xtitle: "Time", ytitle: "Viewer Count", min: nil, max:nil, refresh: 10 %>
+        <%= line_chart "/users/render_chart?stream_id=" + @stream.id.to_s, xtitle: "Time", ytitle: "Viewer Count", min: nil, max:nil, refresh: 5 %>
     </div>
 </div>

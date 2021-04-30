@@ -1,6 +1,9 @@
-<h1>Editing Follow</h1>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">Edit Follow</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Follows', follows_path, class: 'primary-button' %>
+    <%= link_to 'Show', @follow, class: 'primary-button' %>
+  </div>
+</div>
 
 <%= render 'form', follow: @follow %>
-
-<%= link_to 'Show', @follow %> |
-<%= link_to 'Back', follows_path %>

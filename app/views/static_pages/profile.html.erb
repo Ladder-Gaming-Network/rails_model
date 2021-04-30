@@ -1,0 +1,29 @@
+<head>
+    <%= stylesheet_link_tag "/stylesheets/stylesheet.css" %>
+</head>
+
+<%= image_tag("/images/ladder_logo.png") %>
+
+</br>
+
+<div class="grid-container">
+    <div class="boxed">
+        <p>This is a placeholder profile for user 1. Click Follow to make a follow relationship between user 2 and user 1.<p>
+        <%= image_tag("/images/gamer_pic.jpg") %>
+        </br>
+        <p>User 1</p> </br>
+        <p>This user likes pizza.</p>
+        <p>Twitch: twitch.tv/user1</p>
+        <p>Youtube: youtube.com/user1</p>
+        </br>
+        <%= link_to '/profile/follow', remote: true do %>
+            <button>Follow</button>
+        <% end %>
+    </div>
+    <div class="boxed">
+        <p>Feed</p>
+        </br>
+        <p>User 2: I also like pizza.</p>
+    </div>
+</div>
+</br>

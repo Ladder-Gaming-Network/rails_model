@@ -1,6 +1,9 @@
-<h1>Editing Post</h1>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">Edit Post</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Posts', posts_path, class: 'primary-button' %>
+    <%= link_to 'Show', @post, class: 'primary-button' %>
+  </div>
+</div>
 
 <%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>

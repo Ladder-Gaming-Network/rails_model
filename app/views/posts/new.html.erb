@@ -1,5 +1,8 @@
-<h1>New Post</h1>
+<div class="resource-heading-container  d-flex justify-content-between">
+  <h1 class="heading">New Post</h1>
+  <div class="resource-actions my-auto">
+    <%= link_to 'All Posts', posts_path, class: 'primary-button' %>
+  </div>
+</div>
 
 <%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>
