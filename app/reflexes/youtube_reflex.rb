@@ -33,11 +33,6 @@ class YoutubeReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
   def update_info
-    api_key = "AIzaSyDtW_pu7jl1TwQb6bG0fkphbPuLKXxpdA8"
-
-    channel = Yt::Channel.new id: "UCX6OQ3DkcsbYNE6H8uQQuVA"
-    puts(channel.title)
-    puts(channel.subscriber_count)
   end
 
 

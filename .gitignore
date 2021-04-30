@@ -35,3 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 bin/
+
+# Ignore API keys used for Twitch + YouTube
+api_keys.rb
