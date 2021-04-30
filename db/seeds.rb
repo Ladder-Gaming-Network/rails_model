@@ -1,11 +1,28 @@
 # Lasser Gaming Network COSI 166B Spring 2021
 
 require 'faker'
+
+# data = SteamWebApi::Game.all
+#     data.games
+#     puts data.games["name"]
+  
+
+#     game=SteamWebApi::Game.new(1361320)
+#     puts game
+#     schema = game.schema
+#     puts "\nSCHEMA\n#{schema}"
+#     puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
+#     puts "\nNEWS\n#{ game.news}"
+
+# exit(0)
+
+
 Follow.delete_all
 Post.delete_all
 User.delete_all
 Viewcount.delete_all
 Stream.delete_all
+Interest.delete_all
 
 # Reset the Primary Keys
 ActiveRecord::Base.connection.tables.each do |t|
@@ -38,9 +55,9 @@ for i in 0..num_gamers do
     # each user will have a stream
     Stream.create(user_id:i, title:game)
     for j in 0..1 do
+        game=Faker::Game.title
         # also have the parent_post be random and only for some of the posts
         Post.create(user_id:i, text:Faker::Quote.robin+" "+game, parent_post:rand(num_gamers/2))
-        # create two viewcounts for the stream
-        #Viewcount.create( stream_id:i, viewers:rand(100))
+        Interest.create(user_id:i, interest:game)
     end
 end

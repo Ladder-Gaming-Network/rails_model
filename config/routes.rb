@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :streams
   resources :viewcounts
+  resources :interests
   get 'static_pages/home'
   get 'static_pages/profile'
   get '/users/render_chart', to: 'users#render_chart'

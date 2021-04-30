@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
     has_many :streams
 
+    has_many :interests
+
     def followers
         User.find( FollowsHelper.get_user_follows(self.id))
     end

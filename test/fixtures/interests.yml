@@ -2,10 +2,8 @@
 
 one:
   user_id: 1
-  text: MyString
-  parent_post: 1
+  interest: 
 
 two:
-  user_id: 2W
-  text: MyString
-  parent_post: 1
+  user_id: 1
+  interest: 

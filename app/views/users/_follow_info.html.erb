@@ -27,6 +27,16 @@
             </tr>
         <% end %>
         </table>
+        <br>
+        <table>
+        <p><strong>Interests </strong></p>
+        <% @user.interests.each do |interest| %>
+            <tr>
+            <td><p><%= interest.interest %></p></td>
+            </tr>
+        <% end %>
+        </table>
+       
     </div>
 </div>
 </div>
