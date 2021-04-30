@@ -1,14 +1,13 @@
 Jacob Smith, Christopher Tam, Nicolas Ramirez
 Cosi 166B
-4/7/21
+4/29/21
 
 GitHub link: https://github.com/Ladder-Gaming-Network/rails_model
 Heroku: https://ladder-gaming.herokuapp.com/
-**_/prototypes contains paper prototypes for the final stage of this project!_**
 
 # Current functionality
 
-**Our rails app has progressed from stage 2 to include profile viewing, authentication, and prototypes of Twitch API integration. Users can now register for a Ladder account, log in, view their profile, and follow other users' profiles. The profile now contains more database information, a feed of followed users' posts, as well as a sample Twitch embed and view count tracker using the Chartkick and Twitch-API gems.**
+**Our rails app has progressed from stage 3 to include background viewcount processing, youtube API calls, dynamic page updates upon following, game interest detection, and livestream detection. Users can now opt to link their Youtube accounts, track another user's livestream, and make posts corresponding to their interests. profile viewing, authentication, and prototypes of Twitch API integration. User profiles now contain a wealth of information about that user's content, posting is dynamic, and frontend layouts have been updated accordingly.**
 
 Our main view is the welcome page. This view contains a “carousel” like implementation for the first part of the page. This carousel rotates and displays different images and tag lines. At the top of our application is the navbar. The navbar includes all the different tabs such as “Profile” and also implements a search functionality. The search bar allows users to find and connect with other users on the platform. Our profile view consists of a profile picture, live stream API, description and basic information such as name and timezone. Additionally, you can view your post “feed” in the profile view of our page. The profile view also displays followers and following information.
 
@@ -84,9 +83,13 @@ Add news recommender to /news
 # Current Dependencies
 
 **_Bootstrap_** for website layout
+**_CableReady and StimulusReflex_** for follow reactivity
 **_Faker_** gem for initial seeding
 **_RailsAdmin_** gem for admin console
 **_Chartkick_** gem for live viewcount charting
-**_Twitch-api_** gem for viewcount sampling
+**_Twitch-api_** gem for stream info and viewcount sampling
+**_YT_** gem for channel info
+**_Sidekiq_** gem for background processing
+
 =======
 ![chart_example](images/chart_example.png)
