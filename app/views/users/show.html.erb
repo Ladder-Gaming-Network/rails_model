@@ -9,19 +9,24 @@
 
 <body style="background-color: #315fb3">
 
-    <div style="text-align:center">
-        <%= image_tag("/images/ladder_logo.png") %>
-    </div> </br>
-    
-    <div>
+    <div class="inner-profile">
         <%= render partial: "profile" %>
     </div>
+        
+    <div class="media-section">
+        <h1 class="center" style="color:lightgrey"><%= @user.username + "'s content"%></h1>
+        <div class="inner-profile">
+            <%= render partial: "youtube_layout" %>
+        </div>
 
-    </br> </br>
+        <div class="inner-profile">
+            <%= render partial: "twitch_layout" %>
+        </div>
+    </div>
+
+
+    <div class="inner-profile">
+        <%= render partial: "follow_info" %>
+    </div>
     
-    <%= render partial: "twitch_layout" %>
-
-    </br>
-
-    <%= render partial: "follow_info" %>
 </body>

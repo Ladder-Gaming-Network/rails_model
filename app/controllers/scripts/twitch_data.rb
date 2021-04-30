@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require_relative('../scripts/api_keys')
-
 class TwitchData
   def self.client_link
     
     # link to twitch api via gem
-    client_id = APIKeys.twitch_client_id
-    client_secret = APIKeys.twitch_client_secret
+    client_id = Rails.application.credentials.twitch_client_id
+    client_secret = Rails.application.credentials.twitch_client_secret
     
     Twitch::Client.new(
       client_id: client_id,
