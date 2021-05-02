@@ -3,8 +3,11 @@
 class TwitchData
   def self.client_link
     
-    client_id = Rails.application.credentials.twitch_client_id
-    client_secret = Rails.application.credentials.twitch_client_secret
+    #client_id = Rails.application.credentials.twitch_client_id
+    #client_secret = Rails.application.credentials.twitch_client_secret
+
+    client_id=ENV['client_id']
+    client_secret=ENV['client_secret']
     
     Twitch::Client.new(
       client_id: client_id,
