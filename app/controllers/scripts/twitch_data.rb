@@ -3,7 +3,6 @@
 class TwitchData
   def self.client_link
     
-    # link to twitch api via gem
     client_id = Rails.application.credentials.twitch_client_id
     client_secret = Rails.application.credentials.twitch_client_secret
     

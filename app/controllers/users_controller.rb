@@ -44,6 +44,10 @@ include CableReady::Broadcaster
 
     current_user
     @user = User.find(params[:id])
+    logger.debug "ABCABCAABC"
+    if  ENV.any? {|x,_| x=~ /^HEROKU/ }
+      logger.debug "****#{ENV['TEST']}****"
+    end
 
     #Twitch
     @stream_status = "offline"
