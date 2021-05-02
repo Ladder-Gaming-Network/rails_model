@@ -44,9 +44,6 @@ include CableReady::Broadcaster
 
     current_user
     @user = User.find(params[:id])
-    logger.error "TEST OUTPUT"
-    logger.error  "****#{ENV['client_id']}****"
-    logger.error  "****#{ENV['client_secret']}****"
 
 
     #Twitch
