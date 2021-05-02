@@ -44,18 +44,9 @@ include CableReady::Broadcaster
 
     current_user
     @user = User.find(params[:id])
-    logger.error "ABCABCAABC"
-    if  ENV.any? {|x,_| x=~ /^HEROKU/ }
-      logger.error "****#{ENV['TEST']}****"
-    end
-    #render 
-    #error.log "aa"
-    #debug.log "bb"
+    logger.error "TEST OUTPUT"
+    logger.error  "****#{ENV['TEST']}****"
 
-    render json: {
-      error: ENV['TEST'],
-      status: 400
-    }, status: 400
 
     #Twitch
     @stream_status = "offline"
