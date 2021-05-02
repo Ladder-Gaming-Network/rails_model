@@ -48,8 +48,14 @@ include CableReady::Broadcaster
     if  ENV.any? {|x,_| x=~ /^HEROKU/ }
       logger.error "****#{ENV['TEST']}****"
     end
-    error.log "aa"
-    debug.log "bb"
+    #render 
+    #error.log "aa"
+    #debug.log "bb"
+
+    render json: {
+      error: ENV['TEST'],
+      status: 400
+    }, status: 400
 
     #Twitch
     @stream_status = "offline"
