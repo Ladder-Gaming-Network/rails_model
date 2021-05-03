@@ -2,17 +2,7 @@
 
 require 'faker'
 
-data = SteamWebApi::Game.all
-    puts data.games
-    game=SteamWebApi::Game.new(1361320)
-    puts game
-    schema = game.schema
-    puts "\nSCHEMA\n#{schema}"
-    puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
-    puts "\nNEWS\n#{ game.news}"
-
-exit(0)
-
+Game.delete_all
 Follow.delete_all
 Post.delete_all
 User.delete_all
@@ -57,3 +47,15 @@ for i in 0..num_gamers do
         Interest.create(user_id:i, interest:game)
     end
 end
+# Seed games usig steam web api
+data = SteamWebApi::Game.all
+data.games[0..100].each {|game|
+    Game.create(name:game["name"],code:game["appid"])
+}
+# data.games.each do |key,value|
+    game=SteamWebApi::Game.new(1361320)
+    puts game
+    schema = game.schema
+    puts "\nSCHEMA\n#{schema}"
+    puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
+    puts "\nNEWS\n#{ game.news}"
