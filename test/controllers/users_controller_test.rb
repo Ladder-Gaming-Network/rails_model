@@ -5,8 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #include SessionsController
   setup do
     @user = users(:one)
-    post login_path, params: { session: { username: "admin",
-      password: "12346" } }
+    post login_path, params: { session: { username: "admin", password: "123456" } }
   end
 
   test "should get index" do
@@ -21,7 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_path, params: { user: { description: @user.description, lastname: @user.lastname, stream_link: @user.stream_link, timezone_code: @user.timezone_code, username: @user.username } }
+      post users_path, params: { user: { description: @user.description, lastname: @user.lastname, stream_link: @user.stream_link, timezone_code: @user.timezone_code, username: @user.username,password:"123456"} }
     end
 
     assert_redirected_to user_url(User.last)

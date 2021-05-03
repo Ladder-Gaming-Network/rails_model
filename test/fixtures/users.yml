@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   username: admin
   lastname: MyString
   stream_link: twitch.com/xqcow
@@ -11,6 +12,7 @@ one:
 
 
 two:
+  id: 2
   username: MyString
   lastname: MyString
   stream_link:  twitch.com/xqcow
@@ -18,6 +20,7 @@ two:
   timezone_code: 1
 
 three:
+  id: 3
   username: MyString
   lastname: MyString
   stream_link: twitch.com/xqcow

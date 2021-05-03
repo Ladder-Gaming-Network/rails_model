@@ -16,8 +16,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create post" do
+    # this won't work becaue there isn't a user logged in
     assert_difference('Post.count') do
-      post posts_url, params: { post: { user_id: @post.user_id, parent_post: @post.parent_post, text: @post.text } }
+      post posts_url, params: { post: { text: @post.text } }
     end
 
     assert_redirected_to post_url(Post.last)

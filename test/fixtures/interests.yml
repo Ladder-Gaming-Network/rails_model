@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  interest: 
+  interest: Apple
 
 two:
-  user_id: 1
-  interest: 
+  user_id: 2
+  interest: Orange

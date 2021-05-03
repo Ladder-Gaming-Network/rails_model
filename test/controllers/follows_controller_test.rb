@@ -3,6 +3,7 @@ require "test_helper"
 class FollowsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @follow = follows(:one)
+    post login_path, params: { session: { username: "admin", password: "123456" } }
   end
 
   test "should get index" do
@@ -17,7 +18,8 @@ class FollowsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create follow" do
     assert_difference('Follow.count') do
-      post follows_url, params: { follow: { follower_id: @follow.follower_id, user_id: @follow.user_id } }
+      # needs to be different from fixtures because of validations
+      post follows_url, params: { follow: { follower_id: 1, user_id: 3} }
     end
 
     assert_redirected_to follow_url(Follow.last)

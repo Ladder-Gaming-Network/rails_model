@@ -3,6 +3,7 @@ require "test_helper"
 class ViewcountsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @viewcount = viewcounts(:one)
+    post login_path, params: { session: { username: "admin", password: "123456" } }
   end
 
   test "should get index" do

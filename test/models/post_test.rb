@@ -18,9 +18,9 @@ class PostTest < ActiveSupport::TestCase
     assert_not new_post.save, "Saved post without user id"
   end
 
-  test "should not save post missing parent_post" do
+  test "should save post missing parent_post" do
     new_post = Post.new(text: "Testing...", user_id: 1)
-    assert_not new_post.save, "Saved post without parent post"
+    assert new_post.save, "Saved post without parent post"
   end
 
 end

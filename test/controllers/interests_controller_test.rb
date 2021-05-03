@@ -3,6 +3,7 @@ require "test_helper"
 class InterestsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @interest = interests(:one)
+    post login_path, params: { session: { username: "admin", password: "123456" } }
   end
 
   test "should get index" do

@@ -6,6 +6,6 @@ one:
   parent_post: 1
 
 two:
-  user_id: 2W
+  user_id: 2
   text: MyString
   parent_post: 1
