@@ -68,7 +68,7 @@ gem "kimurai"
 gem "stimulus_reflex"
 gem 'yt', '~> 0.32.0'
 gem "faraday" #,'~>1.0'
-#gem "steam_web_api"
+gem "steam_web_api",:git=>'https://github.com/jsmith2021Brandeis/steam-web-api'
 gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api'
 #gem 'twitch-api', :git => 'https://github.com/mauricew/ruby-twitch-api/tree/f08638321429f5256014f6822ebc4b568be4020c'
 gem 'sidekiq'

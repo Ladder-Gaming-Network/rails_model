@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :games
   ActiveAdmin.routes(self)
   
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

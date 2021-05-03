@@ -2,20 +2,16 @@
 
 require 'faker'
 
-# data = SteamWebApi::Game.all
-#     data.games
-#     puts data.games["name"]
-  
+data = SteamWebApi::Game.all
+    puts data.games
+    game=SteamWebApi::Game.new(1361320)
+    puts game
+    schema = game.schema
+    puts "\nSCHEMA\n#{schema}"
+    puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
+    puts "\nNEWS\n#{ game.news}"
 
-#     game=SteamWebApi::Game.new(1361320)
-#     puts game
-#     schema = game.schema
-#     puts "\nSCHEMA\n#{schema}"
-#     puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
-#     puts "\nNEWS\n#{ game.news}"
-
-# exit(0)
-
+exit(0)
 
 Follow.delete_all
 Post.delete_all
