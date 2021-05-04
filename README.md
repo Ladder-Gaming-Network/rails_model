@@ -1,6 +1,6 @@
 Jacob Smith, Christopher Tam, Nicolas Ramirez
 Cosi 166B
-4/4/21
+5/4/21
 
 GitHub link: https://github.com/Ladder-Gaming-Network/rails_model
 
