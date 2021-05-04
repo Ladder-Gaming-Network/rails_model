@@ -1,6 +1,7 @@
 **Ladder Gaming Report**
 
 ---
+
 [Github pages link for web users] (https://ladder-gaming-network.github.io/rails_model/)
 
 **Product purpose and audience**
@@ -10,37 +11,53 @@ Ladder Gaming is a content integration platform that lets users view information
 **Functionality summary**
 
 The app currently lets you manage profiles, view data from content creation platforms, edit and track posts, and view news for a variety of games.
+
 The main pages, search, and data display
+
 The profile - live tracking and posts
+
 The profile - game information and news
 
 **Schema summary**
 
 User and profile data
+
 -Users - represents a person on the site, with links to their socials and other identifying information
+
 -Posts - represents an announcement, written in text from a specific user
+
 -Follows - represents a relationship between one user and the person they "follow", affecting which notifications they see on their feed
 
 Steam data
+
 -Games - represents a public game on the Steam Store
+
 -Interests - represents a relationship between a user and a game they enjoy
 
 Twitch data
+
 -Streams - represents a given livestream on Twitch
+
 -Viewcounts - represents a viewer count snapshot of a particular stream at a set point in time
 
 **New technologies and services**
 
 We utilized a Sidekiq server to handle our background viewcount fetcher, which pulls data from all tracked streams every few minutes. This job begins when the first stream is tracked, and ends when no tracked streams are live, outputting consistent data to the database.
+
 We connected to the Twitch, Youtube, and Steam APIs through various Ruby gems and authentications, taking advantage of gitignore and config variables to hide sensitive keys.
+
 We used the flexible Chartkick gem to display the data from our stream and viewcounts collections.
 
 **Interesting engineering / challenges**
 
 We had to come up with solutions for the unique problems of following and tracking viewcount data.
+
 Each Twitch streamer needed to have their own confined set of streams and data, which required the extra models of Streams and Viewcounts to streamline interpretation of Twitch API data. The current program checks if a stream is live when a profile is viewed, and if so, displays it as well as any recent tracked data (from the same stream ID). Anyone can opt to track a given stream, which marks that particular stream in the database for background processing and fetches individual viewcounts (another model). The final result is displayed with the useful Chartkick gem, which aggregates all viewcount points into a readable timeline.
-(short bit about follows and global feed notifications)
+
+(bit about many-many representation of follows and global feed notifications)
+
 (bit about interest detection and game information)
+
 (bit about layouts and styling)
 
 **Development, deployment, and testing**
@@ -50,7 +67,9 @@ We generally pushed code directly to Heroku, and later set up a better refined t
 **Architecture diagram**
 
 Our project was based off of Ruby on Rails, with a PostgreSQL database and Heroku deploy.
+
 (List other tech)
+
 (this needs to be fetched from presentation)
 
 **Authors:**
