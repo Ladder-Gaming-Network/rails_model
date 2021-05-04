@@ -85,8 +85,8 @@ include CableReady::Broadcaster
   def create
     @user = User.new(user_params)
     if @user.save
-      reset_session
-      log_in @user
+      #reset_session
+      #log_in @user
       flash[:success] = "Welcome to Ladder Gaming Network!"
       redirect_to @user
     else

@@ -53,13 +53,10 @@ for i in 0..num_gamers do
 end
 # Seed games usig steam web api
 data = SteamWebApi::Game.all
-data.games[0..100].each {|game|
-    Game.create(name:game["name"],code:game["appid"])
+data.games[0..150].each {|game|
+    name=game["name"]
+    # rule out empty or test names
+    if !name.strip.empty? and !name.include? "test"
+        Game.create(name:game["name"],code:game["appid"])
+    end
 }
-# data.games.each do |key,value|
-    game=SteamWebApi::Game.new(1361320)
-    puts game
-    schema = game.schema
-    puts "\nSCHEMA\n#{schema}"
-    puts "\nACHIEVEMENTS\n#{game.achievement_percentages}"
-    puts "\nNEWS\n#{ game.news}"
