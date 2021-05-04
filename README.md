@@ -12,11 +12,11 @@ Ladder Gaming is a content integration platform that lets users view information
 
 The app currently lets you manage profiles, view data from content creation platforms, edit and track posts, and view news for a variety of games.
 
-The main pages, search, and data display
+The main page contains a navbar linking to sign up, login, user listings and search. It contains a wealth of marketing information aimed at content creators and followers looking to join the site, including a welcome carousel, taglines, and slogans.
 
-The profile - live tracking and posts
+User profiles display basic user information, and allow a logged-in user to edit their profile, create posts, and specify interests. It also contains a feed displaying the activity of people the user is following (posts and livestreams), as well as a content integration block containing Youtube channel and Twitch livestream information. From here, users can track others' livestreams, and can view the results in a live viewcount chart.
 
-The profile - game information and news
+Users can also see and edit games they are interested in, which are tied directly to their posts. Each game has a separate webpage displaying possible achievements to be earned, as well as recent developer news, accessible from the Games tab on the navbar.
 
 ## Schema summary
 
@@ -64,7 +64,7 @@ We generally pushed code directly to Heroku and debugged through site logs, and 
 
 Our project was based off of Ruby on Rails, with a PostgreSQL database and Heroku deploy. The views rely on HTML, CSS, Bootstrap stylesheets, and embedded Ruby. External APIs are called with the above gems.
 
-(fetch from presentation)
+![image](https://user-images.githubusercontent.com/45111244/117029052-4a03c900-accc-11eb-97d3-66e3d1bc6bf4.png)
 
 ## Authors:
 - Jacob Smith - jsmith2021@brandeis.edu
