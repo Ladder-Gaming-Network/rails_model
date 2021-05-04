@@ -22,23 +22,23 @@ The profile - game information and news
 
 **User and profile data**
 
--Users - represents a person on the site, with links to their socials and other identifying information
+- Users - represents a person on the site, with links to their socials and other identifying information
 
--Posts - represents an announcement, written in text from a specific user
+- Posts - represents an announcement, written in text from a specific user
 
--Follows - represents a relationship between one user and the person they "follow", affecting which notifications they see on their feed
+- Follows - represents a relationship between one user and the person they "follow", affecting which notifications they see on their feed
 
 **Steam data**
 
--Games - represents a public game on the Steam Store
+- Games - represents a public game on the Steam Store
 
--Interests - represents a relationship between a user and a game they enjoy
+- Interests - represents a relationship between a user and a game they enjoy
 
 **Twitch data**
 
--Streams - represents a given livestream on Twitch
+- Streams - represents a given livestream on Twitch
 
--Viewcounts - represents a viewer count snapshot of a particular stream at a set point in time
+- Viewcounts - represents a viewer count snapshot of a particular stream at a set point in time
 
 ## New technologies and services
 
