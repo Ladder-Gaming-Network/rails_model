@@ -46,15 +46,15 @@ We utilized a Sidekiq server to handle our background viewcount fetcher, which p
 
 We connected to the Twitch, Youtube, and Steam APIs through various Ruby gems and authentications, taking advantage of gitignore and config variables to hide sensitive keys.
 
-We used the flexible Chartkick gem to display the data from our stream and viewcounts collections.
+We also used the flexible Chartkick gem to display the data from our stream and viewcounts collections.
 
 ## Interesting engineering / challenges
 
+Global feed - We needed to create a new model to encode the many-many relationship between users, so we came up with the Follows model. For the global feed, we query which users a certain user is following from the database, and cycle through their posts and streams to display on the main view. As our global feed is one of the more responsive parts of our app, we used Stimulus to automatically update it upon a user follow.
+
 Viewcount tracking - Each Twitch streamer needed to have their own confined set of streams and data, which required the extra models of Streams and Viewcounts to streamline interpretation of Twitch API data. The current program checks if a stream is live when a profile is viewed, and if so, displays it as well as any recent tracked data (from the same stream ID). Anyone can opt to track a given stream, which marks that particular stream in the database for background processing and fetches individual viewcounts (another model). The final result is displayed with the useful Chartkick gem, which aggregates all viewcount points into a readable timeline.
 
-Global feed - 
-
-Game information and interest detection - 
+Game information and interest detection - A goal we had going into the project was to have a user's interests be automatically detected from their post. To do this, we sampled a list of games from the Steam API and encoded it into the Games model, and encoded a many-to-many relationship between users and those games in the Interests model. Then, upon post submission, we detect whether a game name is mentioned in the post and add it to interests.
 
 ## Development, deployment, and testing
 
