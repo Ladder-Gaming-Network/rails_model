@@ -1,11 +1,11 @@
 **Ladder Gaming Report**
 
 ---
-Github pages link for web users: https://ladder-gaming-network.github.io/rails_model/
+[Github pages link for web users] (https://ladder-gaming-network.github.io/rails_model/)
 
 **Product purpose and audience**
 
-Ladder Gaming is a content integration platform that lets users view information from multiple platforms (Twitch, YouTube, and Steam) and connect with their audience through global posts. The goal of the website is to provide easy access to streaming and video data, which can get overwhelming for content creators and followers alike, as well as giving them a platform to give important announcements.
+Ladder Gaming is a content integration platform that lets users view information from multiple platforms (Twitch, YouTube, and Steam) and connect with their audience through global posts. The goal of the website is to provide easy access to streaming and video data, which can get overwhelming for content creators and followers alike to obtain, as well as provide a platform to give important announcements to interested followers.
 
 **Functionality summary**
 
@@ -17,21 +17,23 @@ The profile - game information and news
 **Schema summary**
 
 User and profile data
--Users
--Posts
+-Users - represents a person on the site, with links to their socials and other identifying information
+-Posts - represents an announcement, written in text from a specific user
+-Follows - represents a relationship between one user and the person they "follow", affecting which notifications they see on their feed
 
 Steam data
--Games
--Interests
+-Games - represents a public game on the Steam Store
+-Interests - represents a relationship between a user and a game they enjoy
 
 Twitch data
--Streams
--Viewcounts
+-Streams - represents a given livestream on Twitch
+-Viewcounts - represents a viewer count snapshot of a particular stream at a set point in time
 
 **New technologies and services**
 
 We utilized a Sidekiq server to handle our background viewcount fetcher, which pulls data from all tracked streams every few minutes. This job begins when the first stream is tracked, and ends when no tracked streams are live, outputting consistent data to the database.
 We connected to the Twitch, Youtube, and Steam APIs through various Ruby gems and authentications, taking advantage of gitignore and config variables to hide sensitive keys.
+We used the flexible Chartkick gem to display the data from our stream and viewcounts collections.
 
 **Interesting engineering / challenges**
 
@@ -47,7 +49,8 @@ We generally pushed code directly to Heroku, and later set up a better refined t
 
 **Architecture diagram**
 
-(List of tech, PostgreSQL, Ruby on Rails, Heroku)
+Our project was based off of Ruby on Rails, with a PostgreSQL database and Heroku deploy.
+(List other tech)
 (this needs to be fetched from presentation)
 
 **Authors:**
