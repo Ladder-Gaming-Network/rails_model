@@ -2,7 +2,7 @@
 
 ---
 
-[Github pages link for web users] (https://ladder-gaming-network.github.io/rails_model/)
+Github pages link for web users: (https://ladder-gaming-network.github.io/rails_model/)
 
 ## Product purpose and audience
 
