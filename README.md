@@ -70,6 +70,10 @@ Viewcount tracking - Each Twitch streamer needed to have their own confined set 
 
 Game information and interest detection - A goal we had going into the project was to have a user's interests be automatically detected from their post. To do this, we sampled a list of games from the Steam API and encoded it into the Games model, and encoded a many-to-many relationship between users and those games in the Interests model. Then, upon post submission, we detect whether a game name is mentioned in the post and add it to interests.
 
+API keys- We tried several methods of hiding the secret API Keys for the twitch and youtube APIS, from using the secrets.yaml file, to saving them in our on file and ignoring it, to storing them in system enviornment variables. Our end solution was to store the secret keys as system environment variables for heroku.
+
+Versioning- We also had a version dependency conflict between the steam api and twitch api gems, which caused bundle install to fail. To solve this, we forked the steam api and updated its version dependency. In addition, we made a pull request to the original project so other programmers can benefit.
+
 ## Development, deployment, and testing
 
 We generally pushed code directly to Heroku and debugged through site logs, and later on set up a more refined testing framework that we consistently ran prior to every Git update. Our current Heroku version now supports our main views and controllers, a functioning database, as well as Redis and Sidekiq background servers.
