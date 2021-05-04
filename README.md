@@ -40,13 +40,22 @@ Users can also see and edit games they are interested in, which are tied directl
 
 - Viewcounts - represents a viewer count snapshot of a particular stream at a set point in time
 
+**Relationships**
+
+- User -> User (many-to-many, encoded in Follows)
+- User -> Post (one-to-many)
+- Post -> Post (one-to-one)
+- User -> Stream (one-to-many)
+- User -> Games (many-to-many, encoded in Interests)
+- Stream -> Viewcounts (one-to-many)
+
 ## New technologies and services
 
 We utilized a Sidekiq server to handle our background viewcount fetcher, which pulls data from all tracked streams every few minutes. This job begins when the first stream is tracked, and ends when no tracked streams are live, outputting consistent data to the database.
 
 We connected to the Twitch, Youtube, and Steam APIs through various Ruby gems and authentications, taking advantage of gitignore and config variables to hide sensitive keys.
 
-We also used the flexible Chartkick gem to display the data from our stream and viewcounts collections.
+We also used the flexible Chartkick gem to display the data from our stream and viewcounts collections, which refreshes the chart automatically as new data comes in.
 
 ## Interesting engineering / challenges
 
