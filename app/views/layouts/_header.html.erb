@@ -10,6 +10,12 @@
         <li class="nav-item">
           <a href="/" class="nav-link">You are logged in as <%= current_user.username %></a>
         </li>
+         <li class="nav-item">
+          <%= link_to "Users", "/users/#{current_user.id}", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Games", games_path, class: "nav-link"%>
+        </li> 
       <% end %>
     </ul>
     <%= form_with url: "/search", class: "form-inline my-2 my-lg-0 user-search-form mx-auto", method: :get do |form| %>

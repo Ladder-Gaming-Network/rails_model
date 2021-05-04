@@ -36,6 +36,8 @@
                 <% if @user.id == @current_user.id %>
                     <button class="btn btn-secondary" onClick="document.location.href+='/edit'">Edit Profile</button>
                     <button class="btn btn-secondary" onClick="document.location.href='/posts/new'">New Post</button>
+                    <button class="btn btn-secondary" onClick="document.location.href='/interests/new'">New Interest</button>
+                  
                 <% elsif @following then %>
                     <button class="btn btn-secondary"
                         data-reflex="click->ProfileReflex#unfollow"

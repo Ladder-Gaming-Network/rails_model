@@ -1,5 +1,6 @@
 class InterestsController < ApplicationController
   before_action :set_interest, only: %i[ show edit update destroy ]
+  before_action :logged_in_user, only: [:new]
 
   # GET /interests or /interests.json
   def index
@@ -21,16 +22,15 @@ class InterestsController < ApplicationController
 
   # POST /interests or /interests.json
   def create
-    @interest = Interest.new(interest_params)
+    @interest_params=interest_params
+    @interest_params["user_id"]=current_user.id
+    @interest = Interest.new(@interest_params)
 
-    respond_to do |format|
-      if @interest.save
-        format.html { redirect_to @interest, notice: "Interest was successfully created." }
-        format.json { render :show, status: :created, location: @interest }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @interest.errors, status: :unprocessable_entity }
-      end
+    if @interest.save
+      redirect_to "/users/#{current_user.id}"
+    else 
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @interest.errors, status: :unprocessable_entity }
     end
   end
 
