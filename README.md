@@ -43,10 +43,15 @@ Users can also see and edit games they are interested in, which are tied directl
 **Relationships**
 
 - User -> User (many-to-many, encoded in Follows)
+
 - User -> Post (one-to-many)
+
 - Post -> Post (one-to-one)
+
 - User -> Stream (one-to-many)
+
 - User -> Games (many-to-many, encoded in Interests)
+
 - Stream -> Viewcounts (one-to-many)
 
 ## New technologies and services
