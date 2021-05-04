@@ -1,6 +1,6 @@
 Jacob Smith, Christopher Tam, Nicolas Ramirez
 Cosi 166B
-4/29/21
+4/4/21
 
 GitHub link: https://github.com/Ladder-Gaming-Network/rails_model
 
@@ -8,9 +8,15 @@ Heroku: https://ladder-gaming.herokuapp.com/
 
 Github Pages:  https://ladder-gaming-network.github.io/rails_model/
 
+# **Ladder Gaming Network**
+
+Introducing Ladder Gaming Network, a social media platform for all your gaming needs! Users can post and follow each other, as well as add what games they are interested in. Current streams and posts by followed gamers are displayed in their feed, and their Youtube and Twitch information and stream is shown in the profile. Information on current games and achievements is also on the app! 
+
 # Current functionality
 
-**Our Rails app has progressed from stage 3 to include background viewcount processing, youtube API calls, dynamic page updates upon following, game interest detection, and livestream detection. Users can now opt to link their Youtube accounts, track another user's livestream, and make posts corresponding to their interests. profile viewing, authentication, and prototypes of Twitch API integration. User profiles now contain a wealth of information about that user's content, posting is dynamic, and frontend layouts have been updated accordingly.**
+Our most recent changes include the ability for users to create new interests, displaying games and achievements from the steam API, and  updating the site layout.
+
+Our Rails app has progressed from stage 3 to include background viewcount processing, youtube API calls, dynamic page updates upon following, game interest detection, and livestream detection. Users can now opt to link their Youtube accounts, track another user's livestream, and make posts corresponding to their interests. profile viewing, authentication, and prototypes of Twitch API integration. User profiles now contain a wealth of information about that user's content, posting is dynamic, and frontend layouts have been updated accordingly.
 
 Our main view is the welcome page. This view contains a “carousel” like implementation for the first part of the page. This carousel rotates and displays different images and tag lines. At the top of our application is the navbar, which includes different links to the rest of the application and also implements search functionality.
 
@@ -18,10 +24,10 @@ Once logged in, our profile view displays basic profile information as well as l
 
 We also added tests of the twitch_data and youtube_data classes, they are in tests/controllers
 
-Current Problems: We are having trouble deploying API keys to Heroku, managing the different dependencies of the planned steam_web_api gem integration and the twitch-api gem
-
 
 # URL Routes
+
+**Routes used in app**
 
 Home page: /
 Search form: /search
@@ -41,16 +47,23 @@ Posts: /posts
 /posts/delete
 /posts/1
 
-Followers: /follows
-...
+
+
+Interests: /interests
+
+Games: /games
+
+
+
+**Background routes, only the admin can view these**
 
 Streams: /streams
-...
+
+Sessions: /sessions
+
+Followers: /follows
 
 Viewcounts: /viewcounts
-...
-...
-...
 
 # Database schema
 
@@ -78,7 +91,7 @@ Name: Follows
 
 Name: Games
 
-- string name
+- string name, 
 
 Name: Interests
 
@@ -88,8 +101,7 @@ Associations
 User -> Posts (Posts) **_(One to Many)_**
 User -> User (Follows) **_(Many to Many)_**
 User -> User (Followers) **_(Many to Many)_**
-User -> Stream **_(One to Many)_**
-Stream -> Viewcount **_(One to Many)_**
+User -> Stream **_(One to Many)_**Stream -> Viewcount **_(One to Many)_**
 User -> Games (Interests) **_(Many to Many)_**
 
 # Current Dependencies

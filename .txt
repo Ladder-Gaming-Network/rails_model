@@ -1,0 +1,11 @@
+---
+name: Ladder Gaming Network
+blurb: Introducing Ladder Gaming Network, a social media platform for all your gaming needs! Users can post and follow each other, as well as add what games they are interested in. Current streams and posts by followed gamers are displayed in their feed, and their Youtube and Twitch information and stream is shown in the profile. Information on current games and achievements is also on the app!  
+course: CS166B
+semester: 2021 (Spring)
+github: https://github.com/Ladder-Gaming-Network/rails_model
+application: https://ladder-gaming.herokuapp.com/
+presentation: https://docs.google.com/presentation/d/13Bf-znwfwNKGqQBIGoffngldXK0ujuYkFMy_fBPW_6Q/edit?usp=sharing
+image: https://ibb.co/7NWb0dC
+team: Christopher Tam, Jacob Smith, Nicolas Ramirez
+---

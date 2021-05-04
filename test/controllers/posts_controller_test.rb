@@ -3,6 +3,7 @@ require "test_helper"
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
+    post login_path, params: { session: { username: "admin", password: "123456" } }
   end
 
   test "should get index" do
@@ -21,7 +22,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: { text: @post.text } }
     end
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to "/users/"+@post.user_id.to_s
   end
 
   test "should show post" do

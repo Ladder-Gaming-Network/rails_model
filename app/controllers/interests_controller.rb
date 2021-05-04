@@ -5,6 +5,10 @@ class InterestsController < ApplicationController
   # GET /interests or /interests.json
   def index
     @interests = Interest.all
+    if !admin?
+      flash[:danger]="Only the Admin can see that!"
+      redirect_to ""
+    end
   end
 
   # GET /interests/1 or /interests/1.json

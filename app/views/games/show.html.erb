@@ -12,10 +12,12 @@
 <body style="background-color: #315fb3">
 
     <div class="media-section">
-        <h1 class="center" style="color:lightgrey"><a href=<%="https://store.steampowered.com/app/"+@game.code.to_s%>><p><%=@game.name%></p></a></h1>
+        <h1 class="center" style="text-color:white"><a href=<%="https://store.steampowered.com/app/"+@game.code.to_s%>><p><%=@game.name%></p></a></h1>
     </div>
     <p>
 <p>
+    <div class="boxed center">
+    
   <strong>Achievements:</strong><br>
   <% if @achievments%>
   <% @achievments.each do |achievment| %>
@@ -26,8 +28,10 @@
       <br>
   <% end %>
   <% end %>
+  </div>
 </p>
 <p>
+  <div class="boxed center">
   <strong>News:</strong><br>
    <% if @news%>
   <% @news.each do |item| %>
@@ -40,6 +44,7 @@
       <br>
   <% end %>
   <% end %>
+  </div>
 </p>
 <%= link_to 'Back', games_path %>
     
