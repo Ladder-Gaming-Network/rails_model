@@ -17,6 +17,7 @@
     <p>
 <p>
   <strong>Achievements:</strong><br>
+  <% if @achievments%>
   <% @achievments.each do |achievment| %>
       <tr>
       <td><%=achievment["name"].downcase %></td>
@@ -24,9 +25,11 @@
       </tr>
       <br>
   <% end %>
+  <% end %>
 </p>
 <p>
   <strong>News:</strong><br>
+   <% if @news%>
   <% @news.each do |item| %>
       <tr>
       
@@ -35,6 +38,7 @@
       <td><%=item["contents"]%></td>
       </tr>
       <br>
+  <% end %>
   <% end %>
 </p>
 <%= link_to 'Back', games_path %>
