@@ -1,17 +1,17 @@
- <%#<div class="container marketing-container">
-  <%# <% marketing_data.each_with_index do |data, index| %>
-   <%#  <div class="marketing-item">
-    <%#   <div class="row no-gutters <%= 'flex-row-reverse' if index.even? %>">
-      <%#   <div class="col-6">
-      <%#     <%= image_tag data[:image_url], class: "marketing-item-img mx-auto my-auto" %>
-       <%#  </div>
-       <%#  <div class="col-6">
-        <%#   <h3 class="heading"><%= data[:heading].html_safe %></h3>
-         <%#  <p class="description"><%= data[:description].html_safe %></p>
-       <%#  </div>
-     <%#  </div>
-   <%#  </div>
- <%#  <% end %>
+<div class="container marketing-container">
+  <% marketing_data.each_with_index do |data, index| %>
+    <div class="marketing-item">
+      <div class="row no-gutters <%= 'flex-row-reverse' if index.even? %>">
+        <div class="col-6">
+          <%= image_tag data[:image_url], class: "marketing-item-img mx-auto my-auto" %>
+        </div>
+        <div class="col-6">
+          <h3 class="heading"><%= data[:heading].html_safe %></h3>
+          <p class="description"><%= data[:description].html_safe %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="container features-container">

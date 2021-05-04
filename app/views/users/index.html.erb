@@ -12,7 +12,7 @@
         <th scope="col">Lastname</th>
         <th scope="col">Stream link</th>
         <th scope="col">Description</th>
-        <th scope="col">Timezone code</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
           <td><%= user.lastname %></td>
           <td><%= user.stream_link %></td>
           <td><%= user.description %></td>
-          <td><%= user.timezone_code %></td>
+          <td><a href=<%="/users/" + user.id.to_s %>><p>View</p></a></td>
         </tr>
       <% end %>
     </tbody>

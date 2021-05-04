@@ -9,8 +9,9 @@ class ViewcountFetchWorker
       Stream.where(tracked: true).each do |stream|
 
         #init client
-        client_id = "70z1l0mo2xuyv7ujj5q3gy4pmuktk6"
-        client_secret = "1lfolprd26gv90uaxj3bxb2x10csju"
+        client_id=ENV['client_id']
+        client_secret=ENV['client_secret']
+        
         twitch_client = Twitch::Client.new(
             client_id: client_id,
             client_secret: client_secret

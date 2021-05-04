@@ -8,16 +8,6 @@
       <%= render 'shared/error_messages' %>
      
       <div class="form-container">
-        <div class="form-item">
-          <div class="row no-gutters">
-            <div class="col-lg-4">
-              <%= f.label :lastname %>
-            </div>
-            <div class="col-lg-8">
-              <%= f.text_field :lastname, class: 'mb-3 form-control' %>
-            </div>
-          </div>
-        </div>
 
         <div class="form-item">
           <div class="row no-gutters">
@@ -26,6 +16,17 @@
             </div>
             <div class="col-lg-8">
               <%= f.text_field :username, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :lastname %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :lastname, class: 'mb-3 form-control' %>
             </div>
           </div>
         </div>
@@ -59,6 +60,17 @@
             </div>
             <div class="col-lg-8">
               <%= f.text_field :stream_link, class: 'mb-3 form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <%= f.label :youtube_id %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :youtube_id, class: 'mb-3 form-control' %>
             </div>
           </div>
         </div>
