@@ -6,6 +6,8 @@ GitHub link: https://github.com/Ladder-Gaming-Network/rails_model
 
 Heroku: https://ladder-gaming.herokuapp.com/
 
+Github Pages:  https://ladder-gaming-network.github.io/rails_model/
+
 # Current functionality
 
 **Our Rails app has progressed from stage 3 to include background viewcount processing, youtube API calls, dynamic page updates upon following, game interest detection, and livestream detection. Users can now opt to link their Youtube accounts, track another user's livestream, and make posts corresponding to their interests. profile viewing, authentication, and prototypes of Twitch API integration. User profiles now contain a wealth of information about that user's content, posting is dynamic, and frontend layouts have been updated accordingly.**

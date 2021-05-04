@@ -9,7 +9,7 @@ class SearchController < ApplicationController
           else  
             flash[:danger] = "Your search returned no results"
           end
-          redirect_to "/users"
         end
+        redirect_to "/users"
     end
 end

@@ -20,9 +20,13 @@ num_gamers=10
 #Seed Users
 # Create Admin User
 User.create(username:"admin", lastname:"smith",password:"123456", password_confirmation:"123456",admin_permissions:TRUE,timezone_code:0,description:"Admin User")
+twitch_links=["xqcow","sykkuno","monstercat","shroud","yvonnie"]
+youtube_links=["UCmDTrq0LNgPodDOFZiSbsww","UCRAEUAmW9kletIzOxhpLRFw","UCJ6td3C9QlPO9O_J5dF4ZzA","UCoz3Kpu5lv-ALhR4h9bDvcw","UCgDvko7FcHndaS-QoLJw_PA"]
+
 for i in 1..num_gamers do
     last_name=Faker::Name.last_name
-    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/xqcow", description:Faker::Quote.yoda, timezone_code:rand(-12..12),password:"123456", password_confirmation:"123456",youtube_id:"UCmDTrq0LNgPodDOFZiSbsww")
+    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/"+twitch_links[i%twitch_links.length], description:Faker::Quote.yoda, 
+        timezone_code:rand(-12..12),password:"123456", password_confirmation:"123456",youtube_id:youtube_links[i%youtube_links.length])
 end
 
 #Seed Follows, every gamer will follow another gamer

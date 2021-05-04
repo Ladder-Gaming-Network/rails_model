@@ -12,17 +12,15 @@
         <th scope="col">Lastname</th>
         <th scope="col">Stream link</th>
         <th scope="col">Description</th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @users.drop(1).each do |user| %>
         <tr>
-          <td><%= user.username %></td>
+          <td><a href=<%="/users/" + user.id.to_s %>><p><%=user.username%></p></a></td>
           <td><%= user.lastname %></td>
           <td><%= user.stream_link %></td>
           <td><%= user.description %></td>
-          <td><a href=<%="/users/" + user.id.to_s %>><p>View</p></a></td>
         </tr>
       <% end %>
     </tbody>
