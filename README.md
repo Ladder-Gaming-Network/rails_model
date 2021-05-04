@@ -50,15 +50,11 @@ We used the flexible Chartkick gem to display the data from our stream and viewc
 
 ## Interesting engineering / challenges
 
-We had to come up with solutions for the unique problems of following and tracking viewcount data.
+Viewcount tracking - Each Twitch streamer needed to have their own confined set of streams and data, which required the extra models of Streams and Viewcounts to streamline interpretation of Twitch API data. The current program checks if a stream is live when a profile is viewed, and if so, displays it as well as any recent tracked data (from the same stream ID). Anyone can opt to track a given stream, which marks that particular stream in the database for background processing and fetches individual viewcounts (another model). The final result is displayed with the useful Chartkick gem, which aggregates all viewcount points into a readable timeline.
 
-Each Twitch streamer needed to have their own confined set of streams and data, which required the extra models of Streams and Viewcounts to streamline interpretation of Twitch API data. The current program checks if a stream is live when a profile is viewed, and if so, displays it as well as any recent tracked data (from the same stream ID). Anyone can opt to track a given stream, which marks that particular stream in the database for background processing and fetches individual viewcounts (another model). The final result is displayed with the useful Chartkick gem, which aggregates all viewcount points into a readable timeline.
+Global feed - 
 
-(bit about many-many representation of follows and global feed notifications)
-
-(bit about interest detection and game information)
-
-(bit about layouts and styling)
+Game information and interest detection - 
 
 ## Development, deployment, and testing
 
@@ -67,7 +63,8 @@ We generally pushed code directly to Heroku and debugged through site logs, and 
 ## Architecture diagram
 
 Our project was based off of Ruby on Rails, with a PostgreSQL database and Heroku deploy. The views rely on HTML, CSS, Bootstrap stylesheets, and embedded Ruby. External APIs are called with the above gems.
-(this needs to be fetched from presentation)
+
+(fetch from presentation)
 
 ## Authors:
 - Jacob Smith - jsmith2021@brandeis.edu
