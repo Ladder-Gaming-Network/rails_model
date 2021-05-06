@@ -81,19 +81,19 @@ Name: Viewcount
 
 - integer viewers, integer stream_id
 
-Name: Posts
+Name: Post
 
 - integer user_id, string text, int parent_post id (0 if no parent)
 
-Name: Follows
+Name: Follow
 
 - integer user_ id, integer follower_id (which is another user id)
 
-Name: Games
+Name: Game
 
 - string name, 
 
-Name: Interests
+Name: Interest
 
 - integer user_id, integer game_id
 
