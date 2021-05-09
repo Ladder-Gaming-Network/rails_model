@@ -1,7 +1,8 @@
 <div class="grid-container">
 <div class="boxed">
         <div class="inner-profile">
-            <p><strong>Posts:</strong></p>
+        <p><strong>Posts:</strong></p>
+
         <table>
         <% @user.posts.each do |post| %>
             <tr>
@@ -18,7 +19,9 @@
             </tr>
         <% end %>
         </table>
+
         <br>
+
         <table>
         <p><strong>Followers: <%= @user.followers.count %></strong></p>
         <% @user.followers.each do |follower| %>

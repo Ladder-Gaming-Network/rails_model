@@ -29,7 +29,8 @@ class PostsController < ApplicationController
     @post = Post.new(@post_params)
 
     if @post.save
-      redirect_to "/users/#{current_user.id}"
+      current_user
+      redirect_to "/profile?id=#{@current_user.id}"
     else 
       format.html { render :new, status: :unprocessable_entity }
       format.json { render json: @post.errors, status: :unprocessable_entity }

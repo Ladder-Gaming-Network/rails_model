@@ -35,16 +35,11 @@ include CableReady::Broadcaster
     end
   end
 
-  def counter
-    @count ||= session[:count]
-  end
-
   # GET /users/1 or /users/1.json
   def show
 
     current_user
     @user = User.find(params[:id])
-
 
     #Twitch
     @stream_status = "offline"
@@ -57,6 +52,7 @@ include CableReady::Broadcaster
 
     #Youtube
     @channel = YoutubeData.get_channel_info(@user.youtube_id)
+
     #Follows
     @following = false
     if Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then
@@ -84,10 +80,9 @@ include CableReady::Broadcaster
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+
     if @user.save
-      #reset_session
-      #log_in @user
-      flash[:success] = "Welcome to Ladder Gaming Network!"
+      flash[:success] = "Welcome to the app!"
       redirect_to @user
     else
       render 'new'
@@ -97,9 +92,10 @@ end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
+        format.html { redirect_to "/profile?id=#{@current_user.id}", notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }

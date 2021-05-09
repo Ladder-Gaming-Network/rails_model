@@ -6,35 +6,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <%= javascript_pack_tag 'twitchchart' %>
 
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body style="background-color: #315fb3">
+<%= render partial: "sidebar" %>
 
-    <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <div class="inner-profile">
-            <%= render partial: "profile" %>
-        </div>
-            
-        <div class="media-section">
-            <h1 class="center" style="color:lightgrey"><%= @user.username + "'s content"%></h1>
-            <div class="inner-profile">
-                <%= render partial: "youtube_layout" %>
-            </div>
-
-            <div class="inner-profile">
-                <%= render partial: "twitch_layout" %>
-            </div>
-        </div>
-
-
-        <div class="inner-profile">
-            <%= render partial: "follow_info" %>
-        </div>
-    </div>
-
-    </div>
-    </div>
-</body>
+<%= render partial: "profile" %>

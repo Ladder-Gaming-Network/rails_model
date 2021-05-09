@@ -28,7 +28,8 @@ module SessionsHelper
     end
   
     def redirect_back_or(default)
-      redirect_to(session[:forwarding_url] || default)
+      current_user
+      redirect_to("/profile?id=#{@current_user.id}" || default)
       session.delete(:forwarding_url)
     end
   

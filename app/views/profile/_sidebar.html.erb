@@ -1,0 +1,71 @@
+<body style="background-color: #315fb3">
+
+    <div class="container-fluid">
+    <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+
+                <li class="nav-item"><p> </p></li>
+                <li class="nav-item"><p> </p></li>
+
+                <li class="nav-item">
+                <h6><strong> <%= "#{@user.username}'s content" %> </strong></h6>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" href=<%= "/profile?id=#{@user.id}" %>>
+                    <span data-feather="home"></span>
+                    <%= "View Profile" %> <span class="sr-only">(current)</span>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href=<%= "/profile/stream?id=#{@user.id}" %>>
+                    View Stream
+                </a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href=<%= "/profile/posts?id=#{@user.id}" %>>
+                    View Posts
+                </a>
+                </li>
+
+                <li class="nav-item"><p> </p></li>
+                <li class="nav-item"><p> </p></li>
+                <li class="nav-item"><p> </p></li>
+
+                <li class="nav-item">
+                    <h6><strong> <%= "Your account" %> </strong></h6>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href=<%= "/profile/feed" %>>
+                        View Feed
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href=<%= "/users/#{@current_user.id}/edit" %>>
+                        Edit Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href=<%= "/posts/new" %>>
+                        Make Post
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href=<%= "/interests/new" %>>
+                        Make Interest
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    </div>
+    </div>
+</body>

@@ -31,7 +31,8 @@ class InterestsController < ApplicationController
     @interest = Interest.new(@interest_params)
 
     if @interest.save
-      redirect_to "/users/#{current_user.id}"
+      current_user
+      redirect_to "/profile?id=#{@current_user.id}"
     else 
       format.html { render :new, status: :unprocessable_entity }
       format.json { render json: @interest.errors, status: :unprocessable_entity }

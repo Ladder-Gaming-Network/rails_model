@@ -17,7 +17,7 @@
     <tbody>
       <% @users.each do |user| %>
           <tr>
-            <td><a href=<%="/users/" + user.id.to_s %>><p><%=user.username%></p></a></td>
+            <td><a href=<%="/profile?id=#{user.id}" %>><p><%=user.username%></p></a></td>
             <td><%= user.lastname %></td>
             <td><%= user.stream_link %></td>
             <td><%= user.description %></td>

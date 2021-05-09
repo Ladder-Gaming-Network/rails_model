@@ -22,5 +22,11 @@ Rails.application.routes.draw do
   get '/logout',  to: 'sessions#destroy'
   get '/search' => 'search#search'
 
+  get '/profile', to: 'profile#show'
+  get '/profile/stream', to: 'profile#stream'
+  get '/profile/feed', to: 'profile#feed'
+  get '/profile/test', to: 'profile#test'
+  get '/profile/posts', to: 'profile#posts'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
