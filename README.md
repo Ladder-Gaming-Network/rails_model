@@ -22,7 +22,7 @@ Our main view is the welcome page. This view contains a “carousel” like impl
 
 Once logged in, our profile view displays basic profile information as well as live stream and channel information, if links were provided. Additionally, you can view your post “feed” in the profile view of our page, containing all posts from users you are following, as well as interests determined from the user's post history. From here, you can create posts or edit profile (if the profile is yours), or opt to follow or unfollow a particular user. If a user's stream is live, click "Start Tracking" to begin automatic viewcount fetching, displayed in a graph below the stream.
 
-We also added tests of the twitch_data and youtube_data classes, they are in tests/controllers
+We also added tests of the twitch_data and youtube_data classes, they are in the tests/controllers folder
 
 
 # URL Routes
