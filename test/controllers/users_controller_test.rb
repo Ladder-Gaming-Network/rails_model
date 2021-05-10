@@ -23,7 +23,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_path, params: { user: { description: @user.description, lastname: @user.lastname, stream_link: @user.stream_link, timezone_code: @user.timezone_code, username: @user.username,password:"123456"} }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to '/profile?id='+User.last.id.to_s
   end
 
   # fails with "Expected response to be a <2XX: success>, but was a <302: Found> redirect to <http://www.example.com/login"

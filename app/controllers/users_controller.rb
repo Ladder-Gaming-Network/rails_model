@@ -86,7 +86,7 @@ include CableReady::Broadcaster
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the app!"
-      redirect_to @user
+      redirect_to '/profile?id='+@user.id.to_s
     else
       render 'new'
     end

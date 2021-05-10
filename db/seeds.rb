@@ -56,12 +56,13 @@ end
 # Seed games usig steam web api
 data = SteamWebApi::Game.all
 data.games[0..300].each {|game|
-    name=game["name"]
+    name=game["name"].downcase
     game_api=SteamWebApi::Game.new(game["appid"])
     achievments=game_api.achievement_percentages.achievements
     news=game_api.news.news_items
     # rule out empty or test names
-    if !name.strip.empty? and !achievments.nil? and !news.nil? and !name.include? "hentai"
+    if !name.strip.empty? and !achievments.nil? and !news.nil? and !name.include? "hentai" and !name.include? "sex" and !name.include? "fap"
+        # use the original name to ignore downcasing
         Game.create(name:game["name"],code:game["appid"])
     end
 }
