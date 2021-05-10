@@ -22,7 +22,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: { text: @post.text } }
     end
 
-    assert_redirected_to "/users/"+@post.user_id.to_s
+    assert_redirected_to "/profile?id="+@post.user_id.to_s
   end
 
   test "should show post" do

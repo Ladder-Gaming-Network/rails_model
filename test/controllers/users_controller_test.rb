@@ -38,8 +38,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { description: @user.description, lastname: @user.lastname, stream_link: @user.stream_link, timezone_code: @user.timezone_code, username: @user.username } }
-    assert_redirected_to user_url(@user)
+    patch user_url(@user), params: { user: { description: @user.description, lastname: @user.lastname, stream_link: @user.stream_link, timezone_code: @user.timezone_code, username: @user.username,password: "123456" } }
+    assert_redirected_to "/profile?id="+@user.id.to_s
   end
 
   test "should destroy user" do

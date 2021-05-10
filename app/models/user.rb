@@ -11,6 +11,7 @@ class User < ApplicationRecord
     has_secure_password
     before_save { self.username = username.downcase }
     validates :password, presence: true, length: { minimum: 6 }
+    validates :stream_link, length: { minimum: 11 },:allow_blank=>true
 
 
     has_many :posts

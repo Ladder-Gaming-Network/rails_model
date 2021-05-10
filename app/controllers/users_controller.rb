@@ -67,6 +67,7 @@ include CableReady::Broadcaster
       end
     end
     @online_users = TwitchData.get_live_followed(@current_user)
+  end
 
   # GET /users/new
   def new
@@ -80,21 +81,24 @@ include CableReady::Broadcaster
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    UsersHelper.null_blank_input(@user)
 
     if @user.save
+      log_in @user
       flash[:success] = "Welcome to the app!"
       redirect_to @user
     else
       render 'new'
     end
   end
-end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
     current_user
     respond_to do |format|
       if @user.update(user_params)
+        UsersHelper.null_blank_input(@user)
+        @user.save
         format.html { redirect_to "/profile?id=#{@current_user.id}", notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else

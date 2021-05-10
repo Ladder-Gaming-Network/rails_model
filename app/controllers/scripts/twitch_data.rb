@@ -17,9 +17,8 @@ class TwitchData
 
   def self.get_stream_info(twitch_name)
     twitch_client = client_link
-
-    # attempt to get stream data
-    user_fetch = twitch_client.get_users({ login: twitch_name }).data.first
+    # attempt to get stream data   
+    user_fetch=self.get_user_fetch(twitch_name,twitch_client)
     unless user_fetch.nil?
       twitch_id = user_fetch.id
       return twitch_client.get_streams({ user_id: twitch_id }).data.first
@@ -33,8 +32,7 @@ class TwitchData
     stream_info = get_stream_info(twitch_name)
 
     # attempt to get stream data
-    user_fetch = twitch_client.get_users({ login: twitch_name }).data.first
-
+    user_fetch =self.get_user_fetch(twitch_name,twitch_client)
     return nil if user_fetch.nil?
 
     twitch_id = user_fetch.id
@@ -70,5 +68,13 @@ class TwitchData
     end
 
     live_ids
+  end
+
+  def self.get_user_fetch(twitch_name,twitch_client)
+    begin
+      return user_fetch = twitch_client.get_users({ login: twitch_name }).data.first
+    rescue Twitch::APIError
+      return nil
+    end
   end
 end

@@ -1,4 +1,6 @@
 class ProfileController < ApplicationController
+  require_relative("../controllers/scripts/twitch_data.rb")
+  require_relative("../controllers/scripts/youtube_data.rb")
     def stream
         current_user
         @user = User.find(params[:id])

@@ -21,7 +21,7 @@ class InterestsControllerTest < ActionDispatch::IntegrationTest
       post interests_url, params: { interest: { interest: @interest.interest, user_id: @interest.user_id } }
     end
 
-    assert_redirected_to "/users/"+@interest.user_id.to_s
+    assert_redirected_to "/profile?id="+@interest.user_id.to_s
   end
 
   test "should show interest" do

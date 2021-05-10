@@ -4,25 +4,28 @@ one:
   id: 1
   username: admin
   lastname: MyString
-  stream_link: twitch.com/xqcow
+  stream_link: twitch.com/monstercat
   description: MyString
   timezone_code: 1
   admin_permissions: true
   password_digest: <%= User.digest('123456') %>
+  youtube_id: UCJ6td3C9QlPO9O_J5dF4ZzA
 
 
 two:
   id: 2
   username: MyString
   lastname: MyString
-  stream_link:  twitch.com/xqcow
+  stream_link:  twitch.com/monstercat
   description: MyString
   timezone_code: 1
+  youtube_id: UCJ6td3C9QlPO9O_J5dF4ZzA
 
 three:
   id: 3
   username: MyString
   lastname: MyString
-  stream_link: twitch.com/xqcow
+  stream_link: twitch.com/monstercat
   description: MyString
   timezone_code: 1
+  youtube_id: UCJ6td3C9QlPO9O_J5dF4ZzA

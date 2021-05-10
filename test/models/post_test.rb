@@ -3,7 +3,6 @@ require "test_helper"
 class PostTest < ActiveSupport::TestCase
 
   test "should save post with default fields" do
-    puts(User.first.inspect)
     new_post = Post.new(user_id: User.first.id, text: "Testing...", parent_post: 3)
     assert new_post.save!, "Did not save valid post"
   end

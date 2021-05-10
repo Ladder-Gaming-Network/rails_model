@@ -20,12 +20,14 @@ num_gamers=10
 #Seed Users
 # Create Admin User
 User.create(username:"admin", lastname:"smith",password:"123456", password_confirmation:"123456",admin_permissions:TRUE,timezone_code:0,description:"Admin User")
-twitch_links=["xqcow","sykkuno","monstercat","shroud","yvonnie"]
-youtube_links=["UCmDTrq0LNgPodDOFZiSbsww","UCRAEUAmW9kletIzOxhpLRFw","UCJ6td3C9QlPO9O_J5dF4ZzA","UCoz3Kpu5lv-ALhR4h9bDvcw","UCgDvko7FcHndaS-QoLJw_PA"]
+# seed users with real gamer information
+twitch_links= ["cdawgva",                  "starsmitten",             "tenjoramu",               "annacramling",                 "backgroundgaming_",       "sykkuno",                 "monstercat",              "shroud",                                                                                      "yvonnie",                            "xqcow"]
+youtube_links=["UCPsZ_0SkFdi551iYTG04R2g", "UCblGuuU5c-CYqasi25xXXVQ",nil,                       "UCOVfq3NNYjlYCz1iou69FwQ",     "UC9mSaitKgNZJkKfxeziQC-g","UCRAEUAmW9kletIzOxhpLRFw","UCJ6td3C9QlPO9O_J5dF4ZzA","UCoz3Kpu5lv-ALhR4h9bDvcw",                                                                    "UCgDvko7FcHndaS-QoLJw_PA",           "UCmDTrq0LNgPodDOFZiSbsww"]
+descriptions= ["I'm that guy",             "I play TFT sometimes.",   "てんじょらむ",             "Instructional chess streamer!","24/7 background games!",  "what is up guys",         "24/7 gamer music",        "Canadian streamer, YouTuber and former professional Counter-Strike: Global Offensive player.","Challenger league player...someday.","The coolest French Canadian on Twitch"]
 
 for i in 1..num_gamers do
-    last_name=Faker::Name.last_name
-    User.create(username:last_name+rand(100..999).to_s, lastname:last_name, stream_link:"twitch.com/"+twitch_links[i%twitch_links.length], description:Faker::Quote.yoda, 
+    twitch_link=twitch_links[i%twitch_links.length]
+    User.create(username:twitch_link, lastname:twitch_link, stream_link:"twitch.com/"+twitch_link, description:descriptions[i%descriptions.length],
         timezone_code:rand(-12..12),password:"123456", password_confirmation:"123456",youtube_id:youtube_links[i%youtube_links.length])
 end
 
