@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
     def search()
         @users=User.all()
-        #debugger
         if !params["query"].blank?
           searched_users=User.search(params["query"])
           if searched_users.size>0

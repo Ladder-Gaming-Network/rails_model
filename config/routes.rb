@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/profile/feed', to: 'profile#feed'
   get '/profile/test', to: 'profile#test'
   get '/profile/posts', to: 'profile#posts'
+  get '/profile/interests', to: 'profile#interests'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

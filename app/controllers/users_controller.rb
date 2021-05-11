@@ -35,40 +35,6 @@ include CableReady::Broadcaster
     end
   end
 
-  # GET /users/1 or /users/1.json
-  def show
-
-    current_user
-    @user = User.find(params[:id])
-
-    #Twitch
-    @stream_status = "offline"
-    if !@user.stream_link.nil? then
-      @stream = TwitchData.get_stream(@user.id, @user.stream_link[11..])
-      if !@stream.nil? then
-        @stream_status = "online"
-      end
-    end
-
-    #Youtube
-    @channel = YoutubeData.get_channel_info(@user.youtube_id)
-
-    #Follows
-    @following = false
-    if Follow.where(user_id: @user.id, follower_id: @current_user.id).exists? then
-      @following = true
-    end
-
-    #Feed: get posts that have user id = user.following
-    @feed_posts = []
-    @current_user.following.each do |followed|
-      Post.where(user_id: followed.id).each do |post|
-        @feed_posts.append(post.text + " - " + followed.username)
-      end
-    end
-    @online_users = TwitchData.get_live_followed(@current_user)
-  end
-
   # GET /users/new
   def new
     @user = User.new
